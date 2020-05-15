@@ -1,0 +1,65 @@
+@mixin dashboard-title-font{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+@mixin shadow{
+    -webkit-box-shadow: 1px 1px 2px 2.3px #35c0f5;  
+    -moz-box-shadow:    1px 1px 2px 2.3px #35c0f5;
+    box-shadow:         1px 1px 2px 2.3px #35c0f5;
+}
+
+
+.playlayout
+{
+   .menu-bar{
+    box-shadow: 0 4px 55px 0 #20222319;
+    background-color: #ffffff;
+    min-height:70px ;
+
+        .nav-bar-dropdown
+        { 
+
+             @include dashboard-title-font;
+            font-size: 14px;
+            
+            text-align: center;
+            color: #2c2f32;
+            font-weight: 500;
+            a{
+                color: #2c2f32;
+            }
+         
+        }
+
+
+
+   }
+   .children-area{
+       min-height: 800px;
+   }
+
+   
+
+}
+
+ 
+ 
+.scene
+{
+    border: solid #000 2px ;
+   
+}
+.svg-triangle{
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+
+  .svg-triangle polygon {
+    fill:#98d02e;
+    stroke:#65b81d;
+    stroke-width:2;
+  }
