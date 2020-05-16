@@ -19,10 +19,8 @@ export const ActoinTypes={ initialize:'Initialize',
 
  let handleEffectiveLen=state.handle.width/2;
  
-
-
-  var items=state.leftSideShape;
-  items.map((item,index )=>   {
+  var itemsOfLeft=state.leftSideShape;
+  itemsOfLeft.map((item,index )=>   {
     
     totalWeight=totalWeight+item.Weight;
     if(!item.isFloating)
@@ -30,17 +28,22 @@ export const ActoinTypes={ initialize:'Initialize',
        leftSideForce=leftSideForce+  item.CalculateForce(handleEffectiveLen);
     }
    
-       
-
    });
 
      var rightForce=  !state.rightSideShape.CalculateForce ? 0: state.rightSideShape.CalculateForce(handleEffectiveLen);
      
-     var angle=Mathematics.CalculateEquilibreumAngle(leftSideForce,rightForce);
+     console.log('leftSideForce   '+leftSideForce)
+     console.log('rightForce   '+rightForce)
+    
+
+     var angle=Mathematics.CalculateEquilibreumAngle(rightForce,leftSideForce);
+      console.log('angle   '+angle)
+         
+
       var forcediff=(leftSideForce-rightForce);
        
-
-  if(totalWeight+obj.Weight<=20)
+  
+  if(totalWeight+obj.Weight<=20 && (Math.abs(angle)<30 ))
   {
     var obj=new LeftSideItem(timer);
     var resultToDispatch={};
@@ -51,6 +54,8 @@ export const ActoinTypes={ initialize:'Initialize',
     
   }
 
+  angle=Mathematics.GetMaxAngle(angle,30);
+ 
   return   dispatch =>  {
 
     dispatch(  

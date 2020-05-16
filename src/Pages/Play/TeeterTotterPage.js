@@ -90,28 +90,18 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
     
          <svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg" className="scene">
 
-<g     transform={`rotate(${angle} 495.5 683.24999)`}>
+<g     transform={`rotate(${angle} 500 483.24999)`}>
   {rightItem}
 {items}
-<rect stroke="#bf0000" fill="#0e21f4" stroke-width="1.5" x="0.75" y="683.24999" width="991" height="5" 
+<rect stroke="#bf0000" fill="#0e21f4" stroke-width="1.5" x="0.75" y="483.24999" width="991" height="5" 
   id="handle"/>
 </g>
 
-  <path fill="#f70e0e" stroke="#bf0000" stroke-width="1.5" opacity="0.5" d="m450.5,766.25l49.5,-76.75l49.5,76.75l-99,0z" 
-  id="baseTriangle"/>
-  <rect stroke="#000" fill="#7fff00" stroke-width="1.5" stroke-opacity="null" x="2.5" y="769.25001" width="995.00002" height="30" 
-  id="ground"/>
-
-
-
+<path id="baseTriangle" d="M450.5,769.3750009610361 L500,484.6250090898019 L549.5,769.3750009610361 L450.5,769.3750009610361 z" 
+opacity="1" stroke-width="0" fill="#3f7f00" stroke="#3f7f00"></path>
+<rect id="ground" height="30" width="995.00002" y="769.25001" x="2.5" 
+stroke-width="0" fill="#3f7f00" stroke="#3f7f00"></rect>
 </svg>
-
-
-
-
-
-
-
 
         </div>
     );

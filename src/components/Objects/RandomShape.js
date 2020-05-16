@@ -26,7 +26,7 @@ import RandomGenerator from './RandomGenerator'
 
     CalculateForce(handleLength)
     {
-       this.Force= this.Weight*(this.posX-(handleLength));
+       this.Force= Math.abs( this.Weight*(handleLength-this.posX));
        return this.Force;
     }
 
