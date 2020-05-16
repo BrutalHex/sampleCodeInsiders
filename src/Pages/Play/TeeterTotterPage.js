@@ -71,22 +71,22 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
          return getSvgDrawing(item,index);
     });
   
-     var lastItemId=left[left.length-1].id;
-    var   handleKeyDown=(e)=>{
+    // var lastItemId=left[left.length-1].id;
+    // var   handleKeyDown=(e)=>{
            
   
-       e.preventDefault();    
-       console.log('The link was clicked. '+e.key);  
-        if(e.key=='ArrowLeft')
-        {
-              var svgShape=document.getElementById(`#${lastItemId}`);
+    //    e.preventDefault();    
+    //    console.log('The link was clicked. '+e.key);  
+    //     if(e.key=='ArrowLeft')
+    //     {
+    //           var svgShape=document.getElementById(`#${lastItemId}`);
 
-        }
+    //     }
 
         
 
-
-      }
+  //onKeyDown={(e)=>handleKeyDown(e,)}
+    //   }
 
 
     return (
@@ -94,7 +94,7 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
 
         <div className="col-12 text-center"  tabIndex={0} 
         
-        onKeyDown={(e)=>handleKeyDown(e,)}
+      
         
        
       
