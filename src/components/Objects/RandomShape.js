@@ -1,13 +1,13 @@
 
- import {getRndInteger,getUUID,getShapeArray,getRandomColor} from '../../base/baseService'
-
+import {getUUID,getRandomColor} from '../../base/baseService'
+import RandomGenerator from './RandomGenerator'
 
 
  export default class RandomShape {
     constructor( ) {
         this.id=`left_${getUUID()}`;
-        this.shapeType=getShapeArray()[getRndInteger(0,2)];
-        this.Weight=getRndInteger(1,10);
+        this.shapeType=  RandomGenerator.getRndShape();
+        this.Weight=RandomGenerator.getRndInteger(1,10);
         this.fill=getRandomColor();
         this.height=80;
         this.width=80;
@@ -20,6 +20,8 @@
        this.height=50;
       }
     }
+
+    
     
 
     CalculateForce(handleLength)

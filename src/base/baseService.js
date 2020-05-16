@@ -11,6 +11,7 @@ export function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
   }
 
+ 
 
   export function getShapeArray()
   {
@@ -25,3 +26,6 @@ export function getRndInteger(min, max) {
     }
     return color;
   }
+
+
+  

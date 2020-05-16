@@ -15,7 +15,8 @@ var obj= {
     right   :state.teeterTotter.rightSideShape,
     handle:state.teeterTotter.handle,
     gameTime:state.teeterTotter.gameTime,
-    ForceDiff:state.teeterTotter.ForceDiff
+    ForceDiff:state.teeterTotter.ForceDiff,
+    angle:state.teeterTotter.angle,
 };
  
 return obj;

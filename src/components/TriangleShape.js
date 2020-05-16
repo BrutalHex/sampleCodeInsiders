@@ -1,28 +1,28 @@
-
-
 import React from 'react';
+import TextOfshape from './TextOfshape'
 
+const TriangleShape = (props) => { 
 
-const TriangleShape = (props) => {
-
- 
-     const item=props.Item;
-
+const item=props.Item;
 
  //Weight
 return (
- 
-
-<svg width="80" height="80" id={item.id}  x={item.posX} y={(item.posY)} xmlns="http://www.w3.org/2000/svg">
  <g>
-  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+  <path 
+  style={{fill:item.fill}}
+  transform={`translate(${item.posX},${item.posY})`}
+  id={item.id}  
+   d="m5,76.5l35,-73l35,73l-70,0z" id="svg_1" />
+   <TextOfshape  
+   transform={`translate(${item.posX},${item.posY})`}
+    Item={item}
+    CustomedY={item.posY+50}
+    />
+  
  </g>
- <g>
-  <path stroke="#000" id="svg_1" d="m8.5,74.54399l31.5,-71l31.5,71l-63,0z" stroke-width="1.5" fill="#ccc"/>
- </g>
-</svg>
 
 )
+
 };
 
 export default TriangleShape;

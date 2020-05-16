@@ -1,6 +1,6 @@
 
 import LeftSideItem from '../../components/Objects/LeftSideItem'
- 
+ import Mathematics from '../../components/Objects/Mathematics'
 export const ActoinTypes={ initialize:'Initialize',
                           newLeftSideShape:'newLeftSideShape',
                           disableMove:'disableMove',
@@ -18,7 +18,7 @@ export const ActoinTypes={ initialize:'Initialize',
  let leftSideForce=0;
 
  let handleEffectiveLen=state.handle.width/2;
-
+ 
 
 
   var items=state.leftSideShape;
@@ -35,24 +35,20 @@ export const ActoinTypes={ initialize:'Initialize',
    });
 
      var rightForce=  !state.rightSideShape.CalculateForce ? 0: state.rightSideShape.CalculateForce(handleEffectiveLen);
+     
+     var angle=Mathematics.CalculateEquilibreumAngle(leftSideForce,rightForce);
+      var forcediff=(leftSideForce-rightForce);
+       
 
   if(totalWeight+obj.Weight<=20)
   {
-    var obj=new LeftSideItem(timer)
+    var obj=new LeftSideItem(timer);
+    var resultToDispatch={};
+    resultToDispatch.type= ActoinTypes.newLeftSideShape;
+    resultToDispatch.data={ ForceDiff:forcediff , left:obj , angle:  angle}
 
-     return  dispatch =>  {
-
-       dispatch(  
-         {
-          type: ActoinTypes.newLeftSideShape,
-          data:  { ForceDiff:(rightForce-leftSideForce) , left:obj   }
-     }
-   );
-     
- }
+     return  dispatch =>  {dispatch(  {...resultToDispatch});}
     
-    
-
   }
 
   return   dispatch =>  {
@@ -61,7 +57,8 @@ export const ActoinTypes={ initialize:'Initialize',
         {
          type: ActoinTypes.AdjustForce,
          data:  {
-           ForceDiff:(rightForce-leftSideForce)
+           ForceDiff:forcediff,
+           angle:  angle
         }
     }
   );

@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import RectangleShape from '../../components/RectangleShape'
 import CircleShape from '../../components/CircleShape'
 import TriangleShape from '../../components/TriangleShape'
-const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disableMove,ForceDiff}) => {
+const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disableMove,ForceDiff,angle}) => {
    var timer=0;
 
 
-     console.log('ForceDiff   '+ ForceDiff);
+     console.log('angle   '+ angle);
 
 
    var getSvgDrawing=(item,index)=>{
@@ -26,14 +26,17 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
         Index={index}
         Item={item}
        
-        key={`rectangles_${item.id}`}/>
+        key={`circle_${item.id}`}/>
      
         case 'triangle':
-          return <TriangleShape 
+          {
+               return <TriangleShape 
           Index={index}
           Item={item}
          
-          key={`rectangles_${item.id}`}/>
+          key={`triangle_${item.id}`}/>
+          }
+       
      
       default:
          return null;
@@ -77,7 +80,7 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
        
       }
 
-//ForceDiff
+
     return (
 
 
@@ -87,7 +90,7 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
     
          <svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg" className="scene">
 
-<g     transform={`rotate(${ForceDiff/1000} 495.5 683.24999)`}>
+<g     transform={`rotate(${angle} 495.5 683.24999)`}>
   {rightItem}
 {items}
 <rect stroke="#bf0000" fill="#0e21f4" stroke-width="1.5" x="0.75" y="683.24999" width="991" height="5" 
