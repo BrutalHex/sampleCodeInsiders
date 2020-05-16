@@ -66,27 +66,40 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
         item.isFloating=false;
         disableMove(item,index);
        }
+
       }
          return getSvgDrawing(item,index);
     });
   
- 
+     var lastItemId=left[left.length-1].id;
     var   handleKeyDown=(e)=>{
            
-      debugger;
-      e.preventDefault();    
-       console.log('The link was clicked.');  
-      
-       
+  
+       e.preventDefault();    
+       console.log('The link was clicked. '+e.key);  
+        if(e.key=='ArrowLeft')
+        {
+              var svgShape=document.getElementById(`#${lastItemId}`);
+
+        }
+
+        
+
+
       }
 
 
     return (
 
 
-        <div className="col-12 text-center"  tabIndex="0"  onKeyPress={(e)=> {
-          debugger;
-          handleKeyDown(e);}}    >
+        <div className="col-12 text-center"  tabIndex={0} 
+        
+        onKeyDown={(e)=>handleKeyDown(e,)}
+        
+       
+      
+          
+            >
     
          <svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg" className="scene">
 
