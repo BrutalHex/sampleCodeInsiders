@@ -7,6 +7,8 @@ import TriangleShape from '../../components/TriangleShape'
 const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disableMove,ForceDiff,angle}) => {
    var timer=0;
 
+       
+      
 
      console.log('angle   '+ angle);
 
@@ -47,8 +49,13 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
 
    if(isInit)
    {
+    
        initGame();
-      
+       setTimeout(function() {
+        
+        document.getElementById('parentcontainer').focus();
+          
+      }, 200);
    }
 
    right.posY=handle.y-right.height;
@@ -59,49 +66,72 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
       if(item.isFloating)
       {    
          var yPosition=(item.posY)+((gameTime*1)-item.timeSnap);
-           item.posY=yPosition;
-       if(item.posY>=handle.y)
-       {
-        item.posY=handle.y-item.height;
-        item.isFloating=false;
-        disableMove(item,index);
-       }
-
+         if(yPosition>=handle.y)
+         {
+          item.posY=handle.y-item.height;
+          item.isFloating=false;
+          disableMove(item,index);
+         }
+         else{
+          item.posY=yPosition;
+         }
       }
          return getSvgDrawing(item,index);
     });
   
-    // var lastItemId=left[left.length-1].id;
-    // var   handleKeyDown=(e)=>{
+     var lastItem = left[left.length-1];
+      var   handleKeyDown=(e)=>{
+           if(lastItem.isFloating)
+           {
+            e.preventDefault();    
+       
+             var step=30;
+            if(e.key=='ArrowLeft')
+             {
+               lastItem.posX=lastItem.posX-step;
+               if(lastItem.posX <= 30  )
+                 {
+                   lastItem.posX=30;
+                 }
+             }
+     
+             if(e.key=='ArrowRight')
+             {
+               lastItem.posX=lastItem.posX+step;
+               if(lastItem.posX >= 400  )
+                {
+                  lastItem.posX=400;
+                }
+             }
            
-  
-    //    e.preventDefault();    
-    //    console.log('The link was clicked. '+e.key);  
-    //     if(e.key=='ArrowLeft')
-    //     {
-    //           var svgShape=document.getElementById(`#${lastItemId}`);
+           }
+ 
+      }
 
-    //     }
 
-        
+      var handleDivLoadd=()=>{
+           
+             console.log('This loaded');  
+             debugger;
+             document.getElementById('parentcontainer').focus();
 
-  //onKeyDown={(e)=>handleKeyDown(e,)}
-    //   }
+      }
 
 
     return (
 
 
         <div className="col-12 text-center"  tabIndex={0} 
-        
-      
-        
-       
+          id="parentcontainer"
+          onLoad={handleDivLoadd}
+       onKeyDown={handleKeyDown}
       
           
             >
     
-         <svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg" className="scene">
+         <svg width="1000" height="800"
+       
+         xmlns="http://www.w3.org/2000/svg" className="scene">
 
 <g     transform={`rotate(${angle} 500 483.24999)`}>
   {rightItem}
@@ -119,7 +149,6 @@ stroke-width="0" fill="#3f7f00" stroke="#3f7f00"></rect>
         </div>
     );
 
-
-
+ 
 }
 export default TeeterTotterPage;

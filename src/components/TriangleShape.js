@@ -17,6 +17,7 @@ return (
    transform={`translate(${item.posX},${item.posY})`}
     Item={item}
     CustomedY={item.posY+50}
+    
     />
   
  </g>
