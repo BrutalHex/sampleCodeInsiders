@@ -117,9 +117,9 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
     return (
           <div className="col-12">
             <div className="row operatiopn-bar p-4">
-            <Button variant="primary" onClick={handleReset} disabled={!GameOver}>
+            {/* <Button variant="primary" onClick={handleReset} disabled={!GameOver}>
     New Game !!!
-  </Button>
+  </Button> */}
             </div>
             <div className="row">
 
