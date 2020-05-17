@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import TeeterTotterPage from './TeeterTotterPage'
- import {initGame,requestleftSideFloatingShape,setGameTime,disableMove} from './TeeterTotterPageAction'
+ import {initGame,requestleftSideFloatingShape,setGameTime,disableMove,resetGame,setGameTimerHandle} from './TeeterTotterPageAction'
 
 import LeftSideItem from '../../components/Objects/LeftSideItem'
 import RightSideItem from '../../components/Objects/RightSideItem'
@@ -15,8 +15,9 @@ var obj= {
     right   :state.teeterTotter.rightSideShape,
     handle:state.teeterTotter.handle,
     gameTime:state.teeterTotter.gameTime,
-    ForceDiff:state.teeterTotter.ForceDiff,
+ 
     angle:state.teeterTotter.angle,
+    GameOver:state.teeterTotter.GameOver
 };
  
 return obj;
@@ -40,14 +41,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     
 
-
+    
 
     initGame:()=>{
 
     
          let timer=0;
          dispatch(requestleftSideFloatingShape(timer));
-       setInterval(() => {
+     var gameTimerId=  setInterval(() => {
         timer++;
           dispatch(setGameTime(timer));
           if((timer*24)%400==0)
@@ -55,8 +56,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
              dispatch(requestleftSideFloatingShape(timer));
           }
         }, 41);
-    
+       dispatch(setGameTimerHandle(gameTimerId));
       dispatch(initGame(new RightSideItem()));
+    },
+    resetGame:()=>{
+
+      dispatch(resetGame());
+
     }
 
  

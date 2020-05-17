@@ -8,5 +8,7 @@ export const initialState = {
     rightSideShape:{},
     handle:{ y:483.24999,width:991 },
     gameTime:0,
-    ForceDiff:0
+    ForceDiff:0,
+    GameOver:false,
+    GameTimerId:null
 }

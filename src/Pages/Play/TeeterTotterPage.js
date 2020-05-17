@@ -4,15 +4,11 @@ import PropTypes from 'prop-types';
 import RectangleShape from '../../components/RectangleShape'
 import CircleShape from '../../components/CircleShape'
 import TriangleShape from '../../components/TriangleShape'
-const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disableMove,ForceDiff,angle}) => {
-   var timer=0;
+import GameOverModal from '../../components/GameOverModal'
+import Button from 'react-bootstrap/Button'
 
-       
-      
-
-     console.log('angle   '+ angle);
-
-
+const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disableMove,angle,GameOver,resetGame}) => {
+   
    var getSvgDrawing=(item,index)=>{
 
     switch(item.shapeType) {
@@ -84,7 +80,7 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
            if(lastItem.isFloating)
            {
             e.preventDefault();    
-       
+      
              var step=30;
             if(e.key=='ArrowLeft')
              {
@@ -110,25 +106,31 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
 
 
       var handleDivLoadd=()=>{
-           
-             console.log('This loaded');  
-             debugger;
              document.getElementById('parentcontainer').focus();
+      }
 
+      var handleReset=()=>{
+        resetGame();
       }
 
 
     return (
+          <div className="col-12">
+            <div className="row operatiopn-bar p-4">
+            <Button variant="primary" onClick={handleReset} disabled={!GameOver}>
+    New Game !!!
+  </Button>
+            </div>
+            <div className="row">
 
-
-        <div className="col-12 text-center"  tabIndex={0} 
+            <div className="col-12 text-center"  tabIndex={0} 
           id="parentcontainer"
           onLoad={handleDivLoadd}
        onKeyDown={handleKeyDown}
       
           
             >
-    
+    <GameOverModal      Show={GameOver}  Reset={handleReset}   />
          <svg width="1000" height="800"
        
          xmlns="http://www.w3.org/2000/svg" className="scene">
@@ -147,6 +149,15 @@ stroke-width="0" fill="#3f7f00" stroke="#3f7f00"></rect>
 </svg>
 
         </div>
+
+
+
+            </div>
+          </div>
+ 
+      
+
+
     );
 
  

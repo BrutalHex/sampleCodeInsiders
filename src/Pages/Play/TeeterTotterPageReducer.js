@@ -10,12 +10,10 @@ export function TeeterTotterPageReducer(state = initialState, action) {
 
   if (action.type ==ActoinTypes.initialize ) {
     return {
+
       ...state,
       isInit :false,
       rightSideShape: action.data
-     
-
-
 
     };
   }
@@ -59,17 +57,30 @@ if(action.type==ActoinTypes.NewGameTime)
   }
 }
 
-if( action.type==ActoinTypes.AdjustForce)
+if( action.type==ActoinTypes.GameOver)
 {
  
   return {
     ...state ,
     ForceDiff:action.data.ForceDiff,
-    angle:  action.data.angle
+    angle:  action.data.angle,
+    GameOver:true
+  }
+}
+if(action.type==ActoinTypes.ResetGame)
+{
+  return {
+     ...initialState
   }
 }
 
-
+if(action.type==ActoinTypes.GameTimerHandle)
+{
+  return {
+    ...state ,
+    GameTimerId:action.data
+  }
+}
 
 
   return {

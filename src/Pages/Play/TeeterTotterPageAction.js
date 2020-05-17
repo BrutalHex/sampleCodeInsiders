@@ -5,7 +5,9 @@ export const ActoinTypes={ initialize:'Initialize',
                           newLeftSideShape:'newLeftSideShape',
                           disableMove:'disableMove',
                           NewGameTime:'NewGameTime',
-                          AdjustForce:'AdjustForce'
+                          GameOver:'GameOver',
+                          ResetGame:'ResetGame',
+                          GameTimerHandle:'GameTimerHandle'
                         };
 
 
@@ -55,12 +57,15 @@ export const ActoinTypes={ initialize:'Initialize',
   }
 
   angle=Mathematics.GetMaxAngle(angle,30);
+
+  clearInterval( state.GameTimerId)
+     
  
   return   dispatch =>  {
 
     dispatch(  
         {
-         type: ActoinTypes.AdjustForce,
+         type: ActoinTypes.GameOver,
          data:  {
            ForceDiff:forcediff,
            angle:  angle
@@ -126,6 +131,36 @@ export function initGame(obj)
         {
       type: ActoinTypes.initialize,
       data:  obj
+    }
+  );
+    
+}
+
+}
+
+export function resetGame()
+{
+  return   dispatch =>  {
+  
+    dispatch(  
+        {
+      type: ActoinTypes.ResetGame,
+      
+    }
+  );
+    
+}
+}
+
+export function setGameTimerHandle(id)
+{
+
+  return   dispatch =>  {
+  
+    dispatch(  
+        {
+      type: ActoinTypes.GameTimerHandle,
+      data:  id
     }
   );
     
