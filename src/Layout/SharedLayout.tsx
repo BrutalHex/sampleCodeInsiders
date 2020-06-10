@@ -1,10 +1,10 @@
-﻿import React from 'react';
+﻿
+import React, { Component,FunctionComponent  } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-const SharedLayout = ({ children:any }) => (
+const SharedLayout:FunctionComponent<any>= ( {children}) => (
     <div className="row">
-            {children}
+        {children}
     </div>
 );
 

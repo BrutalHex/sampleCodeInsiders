@@ -5,7 +5,7 @@ import TeeterTotterPageReducer from  '../Pages/Play/TeeterTotterPageReducer'
 
 
 
-const rootReducer = (history) => combineReducers({
+const rootReducer = (history:any) => combineReducers({
   router: connectRouter(history),
    
     teeterTotter:TeeterTotterPageReducer,

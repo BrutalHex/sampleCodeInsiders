@@ -1,17 +1,13 @@
- 
-import React from 'react'
-import uuid from 'react-uuid'
+import { v4 as uuidv4 } from 'uuid';
 
 export function getUUID()
 {
-    return uuid();
+    return uuidv4();
 }
 
-export function getRndInteger(min, max) {
+export function getRndInteger(min:number, max:number) {
     return Math.floor(Math.random() * (max - min) ) + min;
   }
-
- 
 
   export function getShapeArray()
   {
@@ -26,6 +22,4 @@ export function getRndInteger(min, max) {
     }
     return color;
   }
-
-
   

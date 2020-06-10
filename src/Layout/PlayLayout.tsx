@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React, { Component,FunctionComponent  } from 'react';
 import { Route } from 'react-router-dom';
 import '../Pages/style/common.scss';
 import '../Pages/style/play.scss';
@@ -11,7 +11,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavLink from 'react-bootstrap/NavLink';
 
 
- export const PlayLayout= (props:any)=>(   
+ export const PlayLayout:FunctionComponent<any> =({children})=>(   
 
 <div className="container-fluid playlayout">
      <div className="row menu-bar">
@@ -31,14 +31,14 @@ import NavLink from 'react-bootstrap/NavLink';
          </Navbar>
      </div>
      <div className="row children-area px-2 py-4 p-md-4 d-flex">
-         {props.children}
+         {children}
      </div>
      <Footer />
 </div>
 
 ); 
 
-export const PlayLayoutRoute = ({ component: Component , ...rest }) => {
+export const PlayLayoutRoute :FunctionComponent<any>= ({ Component: Component , ...rest }) => {
     return (<PlayLayout>
         <Route {...rest} render={(matchProps) => (
             <Component {...matchProps} />
