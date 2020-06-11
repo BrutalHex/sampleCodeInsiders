@@ -4,7 +4,9 @@
 
 
 
-export const logger = store => next => action => {
+export const logger =
+ (store:any) => (next:any) => (action:any) => {
+   debugger;
     console.group(action.type);
     console.info('dispatching', action);
     let result = next(action);
@@ -17,7 +19,7 @@ export const logger = store => next => action => {
  
 
 
-  export const timeoutScheduler = store => next => action => {
+  export const timeoutScheduler =  (store:any) => (next:any) => (action:any) => {
 
  
     if (!action.meta || !action.meta.delay) {

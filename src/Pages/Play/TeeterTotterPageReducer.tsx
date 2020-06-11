@@ -27,7 +27,7 @@ export function TeeterTotterPageReducer(state = initialState, action) {
      var obj={
       ...state,
       leftSideShape:items,
-      ForceDiff:action.data.ForceDiff,
+      ForceDiff:action.data.forceDiff,
       angle:  action.data.angle
     };
    
@@ -62,7 +62,7 @@ if( action.type==ActoinTypes.GameOver)
  
   return {
     ...state ,
-    ForceDiff:action.data.ForceDiff,
+    ForceDiff:action.data.forceDiff,
     angle:  action.data.angle,
     GameOver:true
   }

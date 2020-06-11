@@ -4,17 +4,29 @@ import RandomGenerator from './RandomGenerator'
 
 
  export default class RandomShape {
-    constructor( ) {
+
+      id:string;
+      shapeType:string;
+      weight:number;
+      fill:string;
+      height:number;
+      width:number;
+      posY:number;
+      posX:number;
+      isFloating:boolean ;
+      force:number;
+
+    constructor(posX:number,posY:number) {
         this.id=`left_${getUUID()}`;
         this.shapeType=  RandomGenerator.getRndShape();
-        this.Weight=RandomGenerator.getRndInteger(1,10);
+        this.weight=RandomGenerator.getRndInteger(1,10);
         this.fill=getRandomColor();
         this.height=80;
         this.width=80;
-        this.posY= 0;
-      this.posX=0;
+        this.posY= posY;
+      this.posX=posX;
       this.isFloating=true;
-      this.Force=0;
+      this.force=0;
       if(this.shapeType=='circle')
       {
        this.height=50;
@@ -24,14 +36,14 @@ import RandomGenerator from './RandomGenerator'
     
     
 
-    CalculateForce(handleLength)
+    CalculateForce=(handleLength:number):number=>
     {
-       this.Force= Math.abs( this.Weight*(handleLength-this.posX));
-       return this.Force;
+       this.force= Math.abs( this.weight*(handleLength-this.posX));
+       return this.force;
     }
 
 
-   MoveDownObject(bottomBundry)
+   MoveDownObject=(bottomBundry:number):void=>
    {
     
      if(this.isFloating)

@@ -1,7 +1,6 @@
 export default class  Mathematics
 {
-
-     static CalculateEquilibreumAngle(right,left)
+     static CalculateEquilibreumAngle(right:number,left:number)
      {
           if(left==0)
              {
@@ -14,11 +13,8 @@ export default class  Mathematics
             return Math.atan(tan)*57.296;
      }
 
-     static GetMaxAngle(angle,max)
+     static GetMaxAngle(angle:number,max:number)
      {
-         
-            
-
          if(angle<0)
          {
                if(angle<(-1*max))
@@ -35,5 +31,4 @@ export default class  Mathematics
          }
            return angle;
      }
-
 }

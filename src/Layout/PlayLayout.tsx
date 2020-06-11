@@ -1,4 +1,4 @@
-﻿import React, { Component,FunctionComponent  } from 'react';
+﻿import React, { FunctionComponent  } from 'react';
 import { Route } from 'react-router-dom';
 import '../Pages/style/common.scss';
 import '../Pages/style/play.scss';

@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 
-class Footer extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
+const Footer : FunctionComponent<any> = (props)  => 
+(
             <div className={`section section-footer row`}>
                 <div className="col-10 footer-wrapper center">
                     <div className="row">
@@ -16,12 +10,10 @@ class Footer extends React.Component {
                                     Insider
                              </div>
                             <div className="row footer-social d-flex justify-content-left">
-
                                 <a href="#"> <img src={`${process.env.PUBLIC_URL}/social/facebook.svg`} /></a>
                                 <a href="#" ><img src={`${process.env.PUBLIC_URL}/social/twitter.svg`} /></a>
                                 <a href="#" ><img src={`${process.env.PUBLIC_URL}/social/reddit.svg`} /></a>
                                 <a href="#" ><img src={`${process.env.PUBLIC_URL}/social/github.svg`} /></a>
-
                             </div>
                         </div>
                     </div>
@@ -30,10 +22,7 @@ class Footer extends React.Component {
                     ©2020 Sample for SampleInsider
             </div>
             </div>
-        )
-            ;
-    }
-}
+)
 
 
 export default Footer;

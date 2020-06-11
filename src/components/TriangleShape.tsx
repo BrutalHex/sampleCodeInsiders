@@ -1,7 +1,7 @@
-import React from 'react';
+import React,{FunctionComponent} from 'react';
 import TextOfshape from './TextOfshape'
 
-const TriangleShape = (props) => { 
+const TriangleShape : FunctionComponent<any>= (props) => { 
 
 const item=props.Item;
 
@@ -12,7 +12,7 @@ return (
   style={{fill:item.fill}}
   transform={`translate(${item.posX},${item.posY})`}
   id={item.id}  
-   d="m5,76.5l35,-73l35,73l-70,0z" id="svg_1" />
+   d="m5,76.5l35,-73l35,73l-70,0z"  />
    <TextOfshape  
    transform={`translate(${item.posX},${item.posY})`}
     Item={item}

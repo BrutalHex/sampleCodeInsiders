@@ -1,15 +1,15 @@
 
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import RectangleShape from '../../components/RectangleShape'
 import CircleShape from '../../components/CircleShape'
 import TriangleShape from '../../components/TriangleShape'
 import GameOverModal from '../../components/GameOverModal'
-import Button from 'react-bootstrap/Button'
-
-const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disableMove,angle,GameOver,resetGame}) => {
+ 
+const TeeterTotterPage : FunctionComponent<any> =
+({  isInit,left ,right ,handle,gameTime,initGame,disableMove,angle,GameOver,resetGame}) => {
    
-   var getSvgDrawing=(item,index)=>{
+   var getSvgDrawing=(item:any,index:number) => {
 
     switch(item.shapeType) {
       case 'rectangle':
@@ -57,7 +57,7 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
    right.posY=handle.y-right.height;
    var rightItem= getSvgDrawing(right,0);
     
-  var items=  left.map((item, index) => {
+  var items=  left.map((item:any, index:number) => {
         
       if(item.isFloating)
       {    
@@ -76,7 +76,7 @@ const TeeterTotterPage = ({  isInit,left ,right ,handle,gameTime,initGame,disabl
     });
   
      var lastItem = left[left.length-1];
-      var   handleKeyDown=(e)=>{
+      var   handleKeyDown=(e:any)=>{
            if(lastItem.isFloating)
            {
             e.preventDefault();    

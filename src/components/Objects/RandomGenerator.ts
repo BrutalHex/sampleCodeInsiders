@@ -1,13 +1,16 @@
-import {getShapeArray,getRandomColor} from '../../base/baseService'
+import {getShapeArray} from '../../base/baseService'
 
 
 export default class  RandomGenerator
 {
 
-    static getRndInteger(min, max) {
+    static getRndInteger(min:number, max:number) {
         return Math.floor(Math.random() * (max - min) ) + min;
       }
-      static* shuffle(array) {
+
+
+
+      static* shuffle(array:Array<any>) {
 
         var i = array.length;
     
@@ -16,15 +19,15 @@ export default class  RandomGenerator
         }
     
     }
+    
+      static shaffleDNums=RandomGenerator.shuffle(getShapeArray());
 
-
-      static shaffleDNums=this.shuffle(getShapeArray());
       static getRndShape()
       {
        var val= this.shaffleDNums.next().value;
        if(val==undefined)
        {
-        this.shaffleDNums=this.shuffle(getShapeArray());
+        this.shaffleDNums=RandomGenerator.shuffle(getShapeArray());
         val=this.shaffleDNums.next().value;
         
        }

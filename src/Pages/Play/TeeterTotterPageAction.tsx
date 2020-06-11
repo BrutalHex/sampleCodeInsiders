@@ -12,7 +12,7 @@ export const ActoinTypes={ initialize:'Initialize',
 
 
 
-  function leftSideFloatingShape(timer,getState)
+   const leftSideFloatingShape=(timer:number,getState:any)=>
  {  
    var state=getState().teeterTotter;
     var obj=new LeftSideItem(timer)
@@ -22,9 +22,9 @@ export const ActoinTypes={ initialize:'Initialize',
  let handleEffectiveLen=state.handle.width/2;
  
   var itemsOfLeft=state.leftSideShape;
-  itemsOfLeft.map((item,index )=>   {
+  itemsOfLeft.map((item:any,index:number )=>   {
     
-    totalWeight=totalWeight+item.Weight;
+    totalWeight=totalWeight+item.weight;
     if(!item.isFloating)
     {
        leftSideForce=leftSideForce+  item.CalculateForce(handleEffectiveLen);
@@ -45,7 +45,7 @@ export const ActoinTypes={ initialize:'Initialize',
       var forcediff=(leftSideForce-rightForce);
        
   
-  if(totalWeight+obj.Weight<=20 && (Math.abs(angle)<30 ))
+  if(totalWeight+obj.weight<=20 && (Math.abs(angle)<30 ))
   {
     var obj=new LeftSideItem(timer);
     var resultToDispatch={};
@@ -61,7 +61,7 @@ export const ActoinTypes={ initialize:'Initialize',
   clearInterval( state.GameTimerId)
      
  
-  return   dispatch =>  {
+  return  dispatch  =>  {
 
     dispatch(  
         {

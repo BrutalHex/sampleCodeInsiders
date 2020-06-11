@@ -1,12 +1,10 @@
-import React from 'react';
+import React,{FunctionComponent} from 'react';
 
-const TextOfshape = (props) => {
+const TextOfshape : FunctionComponent<any> = (props) => {
 
       const item=props.Item;
       var posX=!props.CustomedX ?  item.posX+(item.width/2) : props.CustomedX
       var posY=!props.CustomedY ?  item.posY+(item.height/2) : props.CustomedY
-
-
 
 return (
     <text fontWeight="bold" 
@@ -17,7 +15,7 @@ width={item.width}  height={item.height}
 x={posX} y={posY} 
 id={`svg_text_${item.id}`} fontSize="35"
 dominantBaseline="middle" textAnchor="middle"
->{item.Weight}</text>
+>{item.weight}</text>
 
 )
 };

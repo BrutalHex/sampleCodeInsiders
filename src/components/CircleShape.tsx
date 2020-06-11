@@ -1,10 +1,10 @@
 
 
-import React from 'react';
+import React,{FunctionComponent} from 'react';
 import TextOfshape from './TextOfshape'
 
 
-const CircleShape = (props) => {
+const CircleShape :FunctionComponent<any> = (props) => {
 
  
      const item=props.Item;

@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{FunctionComponent} from 'react';
 import TextOfshape from './TextOfshape'
-const RectangleShape = (props) => {
+const RectangleShape : FunctionComponent<any>= (props) => {
       
   const item=props.Item;
 

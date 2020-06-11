@@ -1,5 +1,5 @@
 ﻿
-import React, { Component,FunctionComponent  } from 'react';
+import React, { FunctionComponent  } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SharedLayout:FunctionComponent<any>= ( {children}) => (

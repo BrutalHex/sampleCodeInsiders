@@ -1,8 +1,8 @@
-import React,{ useState } from 'react';
+import React,{ useState,FunctionComponent } from 'react';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
-const GameOverModal = (props) => { 
+const GameOverModal : FunctionComponent<any> = (props) => { 
 
     const [show, setShow] = useState(true);
     const handleClose = () => {

@@ -1,20 +1,17 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export function getUUID()
-{
-    return uuidv4();
-}
+export const getUUID=():string => uuidv4();
 
-export function getRndInteger(min:number, max:number) {
+export const  getRndInteger=(min:number, max:number):number =>{
     return Math.floor(Math.random() * (max - min) ) + min;
   }
 
-  export function getShapeArray()
+  export const getShapeArray=():Array<string> =>
   {
     return ['rectangle','circle','triangle']
   }
 
-  export function getRandomColor() {
+  export const getRandomColor= ():string =>{
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
