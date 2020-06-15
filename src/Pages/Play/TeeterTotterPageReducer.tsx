@@ -8,7 +8,7 @@ export function TeeterTotterPageReducer(state = initialState, action) {
 
   
 
-  if (action.type ==ActoinTypes.initialize ) {
+  if (action.type ==ActoinTypes.Initialize ) {
     return {
 
       ...state,
@@ -19,7 +19,7 @@ export function TeeterTotterPageReducer(state = initialState, action) {
   }
  
 
-  if(action.type==ActoinTypes.newLeftSideShape)
+  if(action.type==ActoinTypes.New_Left_Side_Shape)
   {
     var items=[...state.leftSideShape];
     items.push(action.data.left);
@@ -35,7 +35,7 @@ export function TeeterTotterPageReducer(state = initialState, action) {
     return  obj;
   }
 
-  if(action.type==ActoinTypes.disableMove)
+  if(action.type==ActoinTypes.Disable_Move)
   {
     var items=[...state.leftSideShape];
  
@@ -49,7 +49,7 @@ export function TeeterTotterPageReducer(state = initialState, action) {
     }
   }
   
-if(action.type==ActoinTypes.NewGameTime)
+if(action.type==ActoinTypes.New_Game_Time)
 {
   return {
     ...state ,
@@ -67,14 +67,14 @@ if( action.type==ActoinTypes.GameOver)
     GameOver:true
   }
 }
-if(action.type==ActoinTypes.ResetGame)
+if(action.type==ActoinTypes.Reset_Game)
 {
   return {
      ...initialState
   }
 }
 
-if(action.type==ActoinTypes.GameTimerHandle)
+if(action.type==ActoinTypes.Game_Timer_Handle)
 {
   return {
     ...state ,

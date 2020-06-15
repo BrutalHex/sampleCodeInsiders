@@ -12,3 +12,6 @@ const rootReducer = (history:any) => combineReducers({
   
   })
   export default rootReducer
+
+
+  export type RootState = ReturnType<typeof rootReducer>

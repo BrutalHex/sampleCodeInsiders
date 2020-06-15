@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+
 import TeeterTotterPage from './TeeterTotterPage'
  import {initGame,requestleftSideFloatingShape,setGameTime,disableMove,resetGame,setGameTimerHandle} from './TeeterTotterPageAction'
 

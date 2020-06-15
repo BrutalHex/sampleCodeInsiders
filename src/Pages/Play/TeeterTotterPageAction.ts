@@ -1,15 +1,14 @@
+import {Dispatch,bindActionCreators,Action } from 'redux'
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import LeftSideItem from '../../components/Objects/LeftSideItem'
- import Mathematics from '../../components/Objects/Mathematics'
-export const ActoinTypes={ initialize:'Initialize',
-                          newLeftSideShape:'newLeftSideShape',
-                          disableMove:'disableMove',
-                          NewGameTime:'NewGameTime',
-                          GameOver:'GameOver',
-                          ResetGame:'ResetGame',
-                          GameTimerHandle:'GameTimerHandle'
-                        };
+import Mathematics from '../../components/Objects/Mathematics'
+import 
+{
+   DisableMove,creatAction,ActoinTypes,Game_Timer_Handle,Reset_Game ,Game_Over,IGameOverAction
 
+} from '../../base/ActionTypes'
+ 
 
 
    const leftSideFloatingShape=(timer:number,getState:any)=>
@@ -49,10 +48,10 @@ export const ActoinTypes={ initialize:'Initialize',
   {
     var obj=new LeftSideItem(timer);
     var resultToDispatch={};
-    resultToDispatch.type= ActoinTypes.newLeftSideShape;
+    resultToDispatch.type= ActoinTypes.New_Left_Side_Shape;
     resultToDispatch.data={ ForceDiff:forcediff , left:obj , angle:  angle}
 
-     return  dispatch =>  {dispatch(  {...resultToDispatch});}
+     return   (dispatch: any) =>  {dispatch(  {...resultToDispatch});}
     
   }
 
@@ -61,27 +60,21 @@ export const ActoinTypes={ initialize:'Initialize',
   clearInterval( state.GameTimerId)
      
  
-  return  dispatch  =>  {
-
-    dispatch(  
-        {
-         type: ActoinTypes.GameOver,
-         data:  {
-           ForceDiff:forcediff,
-           angle:  angle
-        }
-    }
-  );
+  return   GameOver(forcediff,angle);
     
 }
+
+
+
+
 }
 
  
 export function requestleftSideFloatingShape(timer) {
  
-  return   dispatch =>  {
+  return    (dispatch: any) =>  {
     dispatch(  
-     (dispatch,getState) => {  dispatch (leftSideFloatingShape(timer,getState))}
+     (dispatch:any,getState:any) => {  dispatch (leftSideFloatingShape(timer,getState))}
   );
 }
 
@@ -91,16 +84,13 @@ export function requestleftSideFloatingShape(timer) {
 
 
 
-export function disableMove(item,index)
+export function disableMove(item:any,index:number)
 {
   item.isFloating=false;
-   return   dispatch =>  {
+   return  (dispatch: any) =>  {
 
     dispatch(  
-        {
-         type: ActoinTypes.disableMove,
-        data:{item:item,index:index}
-    }
+      DisableMove({item:item,index:index})
   );
     
 }
@@ -108,11 +98,11 @@ export function disableMove(item,index)
 
 export function setGameTime(timer)
 {
-  return   dispatch =>  {
+  return    (dispatch: any) =>  {
 
     dispatch(  
         {
-         type: ActoinTypes.NewGameTime,
+         type: ActoinTypes.New_Game_Time,
         data:timer
     }
   );
@@ -125,11 +115,11 @@ export function initGame(obj)
 {
 
   
-   return   dispatch =>  {
+   return    (dispatch: any) =>  {
   
     dispatch(  
         {
-      type: ActoinTypes.initialize,
+      type: ActoinTypes.Initialize,
       data:  obj
     }
   );
@@ -138,35 +128,45 @@ export function initGame(obj)
 
 }
 
-export function resetGame()
-{
-  return   dispatch =>  {
-  
-    dispatch(  
-        {
-      type: ActoinTypes.ResetGame,
-      
-    }
+type MyThunkResult = ThunkAction<ActoinTypes, {}, undefined,Action>;
+type MyThunkDispatch = ThunkDispatch<{}, undefined, Action>;
+
+ 
+export function GameOver(forcediff:number,angle:number): MyThunkResult {
+return  (dispatch:MyThunkDispatch) => 
+         dispatch(  
+      creatAction(  Game_Over,{
+        ForceDiff:forcediff,
+        angle:  angle
+     })
   );
-    
-}
-}
-
-export function setGameTimerHandle(id)
-{
-
-  return   dispatch =>  {
   
-    dispatch(  
-        {
-      type: ActoinTypes.GameTimerHandle,
-      data:  id
-    }
-  );
-    
-}
+  ;
 
-}
+} 
+
+ 
+
+
+
+
+
+   
+
+export function ResetGame():   ActoinTypes{
+  return creatAction(  Reset_Game,'') ;
+}  
+
+
+
+
+export function SetGameTimerHandle(id:string ):   ActoinTypes{
+
+  return creatAction(  Game_Timer_Handle,id) ;
+
+}  
+
+ 
  
   
 

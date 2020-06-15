@@ -6,6 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
+	"paths":{"redux-thunk":["typings/redux-thunk"]},
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
