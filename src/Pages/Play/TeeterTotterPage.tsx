@@ -7,7 +7,7 @@ import TriangleShape from '../../components/TriangleShape'
 import GameOverModal from '../../components/GameOverModal'
  
 const TeeterTotterPage : FunctionComponent<any> =
-({  isInit,left ,right ,handle,gameTime,initGame,disableMove,angle,GameOver,resetGame}) => {
+({  isInit,left ,right ,handle,gameTime,InitGame,DisableMove,angle,GameOver,ResetGame}) => {
    
    var getSvgDrawing=(item:any,index:number) => {
 
@@ -46,10 +46,11 @@ const TeeterTotterPage : FunctionComponent<any> =
    if(isInit)
    {
     
-       initGame();
+       InitGame();
        setTimeout(function() {
+        var item= document.getElementById('parentcontainer');
         
-        document.getElementById('parentcontainer').focus();
+        item != null && item.focus();
           
       }, 200);
    }
@@ -66,7 +67,7 @@ const TeeterTotterPage : FunctionComponent<any> =
          {
           item.posY=handle.y-item.height;
           item.isFloating=false;
-          disableMove(item,index);
+          DisableMove(item,index);
          }
          else{
           item.posY=yPosition;

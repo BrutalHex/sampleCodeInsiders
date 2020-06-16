@@ -54,7 +54,7 @@ interface INewLeftSideShapeAction extends  IGeneralAction<typeof New_Left_Side_S
  {
    
  }
-export  interface IGameOverAction extends  IGeneralAction<typeof Game_Over,any>
+  interface IGameOverAction extends  IGeneralAction<typeof Game_Over,any>
  {
    
  }
@@ -62,7 +62,7 @@ export  interface IGameOverAction extends  IGeneralAction<typeof Game_Over,any>
  {
    
  }
- interface IGameTimerHandleAction extends  IGeneralAction<typeof Game_Timer_Handle,string>
+ interface IGameTimerHandleAction extends  IGeneralAction<typeof Game_Timer_Handle,number>
  {
     
  }
@@ -81,25 +81,15 @@ export  interface IGameOverAction extends  IGeneralAction<typeof Game_Over,any>
                              ;
 
 
-
-export function Initialize(input:any):   ActoinTypes{
-
-       return creatAction( Initialize_APP,input);
-}                
+       
 
 
-export function NewLeftSideShape(input:any):   ActoinTypes{
-   return creatAction(  New_Left_Side_Shape,input) ;
-}  
-
-export function DisableMove(input:any):   ActoinTypes{
-   return creatAction(  Disable_Move,input) ;
-}  
 
 
-export function NewGameTime(input:any):   ActoinTypes{
-   return creatAction(  New_Game_Time,input) ;
-}  
+
+
+
+
 
 
 
