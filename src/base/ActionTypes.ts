@@ -1,12 +1,12 @@
-
-
-  export const   Initialize_APP  ='Initialize';
+import {  InitialState } from './BaseReducer';
+import RightSideItem from '../components/Objects/RightSideItem';
+  export const   Initialize_APP        ='Initialize';
   export const   New_Left_Side_Shape    ='New_Left_Side_Shape';
-  export const   Disable_Move   ='Disable_Move';
-  export const   New_Game_Time   ='New_Game_Time';
-  export const   Game_Over   ='GameOver';
-  export const   Reset_Game  ='Reset_Game';
-  export const   Game_Timer_Handle   ='Game_Timer_Handle';
+  export const   Disable_Move           ='Disable_Move';
+  export const   New_Game_Time          ='New_Game_Time';
+  export const   Game_Over               ='GameOver';
+  export const   Reset_Game              ='Reset_Game';
+  export const   Game_Timer_Handle       ='Game_Timer_Handle';
 
 
   interface IGenericAction<TType,TPayload,TMETA>
@@ -32,7 +32,7 @@
   }
   
   
-
+//RightSideItem
 
 interface IInitializeAction extends  IGeneralAction<typeof Initialize_APP,any>
  {
@@ -62,7 +62,7 @@ interface INewLeftSideShapeAction extends  IGeneralAction<typeof New_Left_Side_S
  {
    
  }
- interface IGameTimerHandleAction extends  IGeneralAction<typeof Game_Timer_Handle,number>
+ interface IGameTimerHandleAction extends  IGeneralAction<typeof Game_Timer_Handle,any>
  {
     
  }

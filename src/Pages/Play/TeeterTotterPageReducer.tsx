@@ -1,6 +1,9 @@
-import {  initialState } from '../../base/BaseReducer'
- import { ActoinTypes } from './TeeterTotterPageAction';
-export function TeeterTotterPageReducer(state = initialState, action) {
+import {  InitialState } from '../../base/BaseReducer';
+ import { ActoinTypes,Initialize_APP,New_Left_Side_Shape ,
+  Disable_Move,New_Game_Time,Game_Over,Reset_Game,Game_Timer_Handle    }  from  '../../base/ActionTypes';
+ 
+
+export function TeeterTotterPageReducer(state = new InitialState(), action : ActoinTypes) {
 
 
    
@@ -8,39 +11,39 @@ export function TeeterTotterPageReducer(state = initialState, action) {
 
   
 
-  if (action.type ==ActoinTypes.Initialize ) {
+  if (action.type == Initialize_APP ) {
     return {
 
       ...state,
       isInit :false,
-      rightSideShape: action.data
+      rightSideShape: action.payload
 
     };
   }
  
 
-  if(action.type==ActoinTypes.New_Left_Side_Shape)
+  if(action.type== New_Left_Side_Shape)
   {
     var items=[...state.leftSideShape];
-    items.push(action.data.left);
+    items.push(action.payload.left);
    
      var obj={
       ...state,
       leftSideShape:items,
-      ForceDiff:action.data.forceDiff,
-      angle:  action.data.angle
+      ForceDiff:action.payload.forceDiff,
+      angle:  action.payload.angle
     };
    
     
     return  obj;
   }
 
-  if(action.type==ActoinTypes.Disable_Move)
+  if(action.type== Disable_Move)
   {
     var items=[...state.leftSideShape];
  
 
-  items[action.data.index]=action.data.item;
+  items[action.payload.index]=action.payload.item;
     
 
     return {
@@ -49,36 +52,36 @@ export function TeeterTotterPageReducer(state = initialState, action) {
     }
   }
   
-if(action.type==ActoinTypes.New_Game_Time)
+if(action.type== New_Game_Time)
 {
   return {
     ...state ,
-    gameTime:action.data
+    gameTime:action.payload
   }
 }
 
-if( action.type==ActoinTypes.GameOver)
+if( action.type== Game_Over)
 {
  
   return {
     ...state ,
-    ForceDiff:action.data.forceDiff,
-    angle:  action.data.angle,
+    ForceDiff:action.payload.forceDiff,
+    angle:  action.payload.angle,
     GameOver:true
   }
 }
-if(action.type==ActoinTypes.Reset_Game)
+if(action.type== Reset_Game)
 {
   return {
-     ...initialState
+     ...InitialState
   }
 }
 
-if(action.type==ActoinTypes.Game_Timer_Handle)
+if(action.type== Game_Timer_Handle)
 {
   return {
     ...state ,
-    GameTimerId:action.data
+    GameTimerId:action.payload
   }
 }
 

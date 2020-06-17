@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
-import { history } from './configureStore'
+import { history } from './reducers'
 import { Route } from 'react-router-dom'
 import App from '../App'
 

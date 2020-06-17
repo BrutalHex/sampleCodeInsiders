@@ -6,7 +6,7 @@ import TeeterTotterPage from './TeeterTotterPage'
 
 import RightSideItem from '../../components/Objects/RightSideItem'
  
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state:any, ownProps:any) => {
   
  
 var obj= {
@@ -16,7 +16,6 @@ var obj= {
     right   :state.teeterTotter.rightSideShape,
     handle:state.teeterTotter.handle,
     gameTime:state.teeterTotter.gameTime,
- 
     angle:state.teeterTotter.angle,
     GameOver:state.teeterTotter.GameOver
 };

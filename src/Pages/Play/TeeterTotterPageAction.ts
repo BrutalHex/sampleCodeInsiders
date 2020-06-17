@@ -1,8 +1,9 @@
-import {Dispatch,bindActionCreators,Action } from 'redux'
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+ 
 import { useSelector } from 'react-redux'
+import {  InitialState } from '../../base/BaseReducer';
 
-import LeftSideItem from '../../components/Objects/LeftSideItem'
+import {TeeterTotterThunkResult,TeeterTotterThunkDispatch,useTypedSelector} from '../../base/BaseTypes'
+ import LeftSideItem from '../../components/Objects/LeftSideItem'
 import RightSideItem from '../../components/Objects/RightSideItem'
 import Mathematics from '../../components/Objects/Mathematics'
 import 
@@ -10,14 +11,18 @@ import
   creatAction,ActoinTypes,Initialize_APP,Game_Timer_Handle,Reset_Game ,Game_Over,Disable_Move,New_Game_Time,New_Left_Side_Shape
 } from '../../base/ActionTypes'
  
-type TeeterTotterThunkResult = ThunkAction<ActoinTypes, {}, undefined,Action>;
-type TeeterTotterThunkDispatch = ThunkDispatch<{}, undefined, Action>;
 
 
 
-   export const RequestleftSideFloatingShape=(timer:number):TeeterTotterThunkResult=>
+
+   export const RequestleftSideFloatingShape=(timer:number):TeeterTotterThunkResult<ActoinTypes>=>
  {  
-   var state=useSelector((state:any) => state.teeterTotter);
+   
+   var state=useTypedSelector(state => state.teeterTotter);
+
+
+
+   
    debugger;
     var obj=new LeftSideItem(timer)
  let totalWeight=0;
@@ -52,7 +57,7 @@ type TeeterTotterThunkDispatch = ThunkDispatch<{}, undefined, Action>;
 
   angle=Mathematics.GetMaxAngle(angle,30);
 
-  clearInterval( state.GameTimerId)
+  clearInterval( state.gameTimerId)
      
  
   return   GameOver(forcediff,angle);
@@ -65,7 +70,7 @@ type TeeterTotterThunkDispatch = ThunkDispatch<{}, undefined, Action>;
 
 
  
-export function InitializeGame(shape:RightSideItem):   TeeterTotterThunkResult{
+export function InitializeGame(shape:RightSideItem):   TeeterTotterThunkResult<ActoinTypes>{
 
   return  (dispatch:TeeterTotterThunkDispatch) => 
   dispatch(  
@@ -79,7 +84,7 @@ export function InitializeGame(shape:RightSideItem):   TeeterTotterThunkResult{
 
 
 
-export function NewLeftSideShape(forcediff:number, shape:LeftSideItem, angle:number):   TeeterTotterThunkResult{
+export function NewLeftSideShape(forcediff:number, shape:LeftSideItem, angle:number):   TeeterTotterThunkResult<ActoinTypes>{
 
  
   return  (dispatch:TeeterTotterThunkDispatch) => 
@@ -95,7 +100,7 @@ export function NewLeftSideShape(forcediff:number, shape:LeftSideItem, angle:num
      
 
  
-export function DisableMove(item:any,index:number):   TeeterTotterThunkResult{
+export function DisableMove(item:any,index:number):   TeeterTotterThunkResult<ActoinTypes>{
 
   item.isFloating=false;
   return  (dispatch:TeeterTotterThunkDispatch) => 
@@ -108,7 +113,7 @@ export function DisableMove(item:any,index:number):   TeeterTotterThunkResult{
 }  
 
  
-export function GameOver(forcediff:number,angle:number): TeeterTotterThunkResult {
+export function GameOver(forcediff:number,angle:number): TeeterTotterThunkResult<ActoinTypes> {
 
    return  (dispatch:TeeterTotterThunkDispatch) => 
          dispatch(  
@@ -120,7 +125,7 @@ export function GameOver(forcediff:number,angle:number): TeeterTotterThunkResult
   
 } 
    
-export function ResetGame():    TeeterTotterThunkResult{
+export function ResetGame():    TeeterTotterThunkResult<ActoinTypes>{
  
   return  (dispatch:TeeterTotterThunkDispatch) => 
   dispatch(  
@@ -130,7 +135,7 @@ export function ResetGame():    TeeterTotterThunkResult{
 }  
 
 
-export function NewGameTimerHandle(id:number ):    TeeterTotterThunkResult{
+export function NewGameTimerHandle(id:number ):    TeeterTotterThunkResult<ActoinTypes>{
 
   return  (dispatch:TeeterTotterThunkDispatch) => 
          dispatch(  
@@ -139,7 +144,7 @@ export function NewGameTimerHandle(id:number ):    TeeterTotterThunkResult{
 
 }  
 
-export function NewGameTime(timer:number):   TeeterTotterThunkResult{
+export function NewGameTime(timer:number):   TeeterTotterThunkResult<ActoinTypes>{
   
 
   return  (dispatch:TeeterTotterThunkDispatch) => 

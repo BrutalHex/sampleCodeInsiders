@@ -1,16 +1,19 @@
 import { combineReducers } from 'redux'
+import { History } from 'history';
+import { createBrowserHistory } from 'history'
 import { connectRouter } from 'connected-react-router'
 import TeeterTotterPageReducer from  '../Pages/Play/TeeterTotterPageReducer'
  
 
+export const history = createBrowserHistory()
 
+const rootReducer = combineReducers({
 
-const rootReducer = (history:any) => combineReducers({
-  router: connectRouter(history),
    
     teeterTotter:TeeterTotterPageReducer,
-  
+    router: connectRouter(history)
   })
+ 
   export default rootReducer
 
 
