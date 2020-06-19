@@ -1,7 +1,7 @@
  
-import LeftSideItem from '../components/Objects/LeftSideItem'
-import RightSideItem from '../components/Objects/RightSideItem'
-import Handle from '../components/Objects/Handle'
+import LeftSideItem from '../components/GameObjects/LeftSideItem'
+import RightSideItem from '../components/GameObjects/RightSideItem'
+import Handle from '../components/GameObjects/Handle'
 export class InitialState 
  {
   

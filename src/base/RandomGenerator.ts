@@ -1,4 +1,4 @@
-import {getShapeArray} from '../../base/baseService'
+import {getShapeArray} from './baseService'
 
 
 export default class  RandomGenerator

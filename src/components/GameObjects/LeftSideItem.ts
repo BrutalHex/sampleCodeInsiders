@@ -1,6 +1,6 @@
 
 import RandomShape from './RandomShape' 
-import RandomGenerator from './RandomGenerator'
+import RandomGenerator from '../../base/RandomGenerator'
 
 export default class LeftSideItem extends RandomShape {
 

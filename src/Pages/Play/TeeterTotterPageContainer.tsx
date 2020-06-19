@@ -1,12 +1,14 @@
-import { connect } from 'react-redux'
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { connect ,ConnectedProps } from 'react-redux'
 
 import TeeterTotterPage from './TeeterTotterPage'
  import {InitializeGame,RequestleftSideFloatingShape,NewGameTime,DisableMove,ResetGame,NewGameTimerHandle} from './TeeterTotterPageAction'
 
-import RightSideItem from '../../components/Objects/RightSideItem'
+import RightSideItem from '../../components/GameObjects/RightSideItem'
+import { TeeterTotterThunkDispatch } from '../../base/BaseTypes';
+import LeftSideItem from '../../components/GameObjects/LeftSideItem';
+import { RootState } from '../../base/reducers';
  
-const mapStateToProps = (state:any, ownProps:any) => {
+const mapStateToProps = (state:RootState ) => {
   
  
 var obj= {
@@ -17,7 +19,7 @@ var obj= {
     handle:state.teeterTotter.handle,
     gameTime:state.teeterTotter.gameTime,
     angle:state.teeterTotter.angle,
-    GameOver:state.teeterTotter.GameOver
+    GameOver:state.teeterTotter.gameOver
 };
  
 return obj;
@@ -25,20 +27,17 @@ return obj;
 }
 
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch:TeeterTotterThunkDispatch ) => {
 
 
 
   return {
 
-    DisableMove:(item:any,index:number)=>{
+    DisableMove:(item:LeftSideItem,index:number)=>{
        
          dispatch( DisableMove(item,index));
        
     },
-    
-
-    
 
     InitGame:()=>{
 
@@ -56,6 +55,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
        dispatch(NewGameTimerHandle(gameTimerId));
       dispatch(InitializeGame(new RightSideItem()));
     },
+
     ResetGame:()=>{
 
       dispatch(ResetGame());
@@ -66,8 +66,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const TeeterTotterPageContainer =  (connect(
-    mapStateToProps,
+const connector = connect(
+  mapStateToProps,
   mapDispatchToProps
-)(TeeterTotterPage))
+)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export interface TeeterTotterPageProps extends PropsFromRedux {
+ 
+}
+
+
+const TeeterTotterPageContainer =  (connector(TeeterTotterPage))
 export default TeeterTotterPageContainer

@@ -5,11 +5,14 @@ import RectangleShape from '../../components/RectangleShape'
 import CircleShape from '../../components/CircleShape'
 import TriangleShape from '../../components/TriangleShape'
 import GameOverModal from '../../components/GameOverModal'
+import LeftSideItem from '../../components/GameObjects/LeftSideItem';
+import RandomShape from '../../components/GameObjects/RandomShape';
+import { TeeterTotterPageProps } from './TeeterTotterPageContainer';
  
-const TeeterTotterPage : FunctionComponent<any> =
+const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
 ({  isInit,left ,right ,handle,gameTime,InitGame,DisableMove,angle,GameOver,ResetGame}) => {
    
-   var getSvgDrawing=(item:any,index:number) => {
+   var getSvgDrawing=(item:RandomShape,index:number) => {
 
     switch(item.shapeType) {
       case 'rectangle':
@@ -58,7 +61,7 @@ const TeeterTotterPage : FunctionComponent<any> =
    right.posY=handle.y-right.height;
    var rightItem= getSvgDrawing(right,0);
     
-  var items=  left.map((item:any, index:number) => {
+  var items=  left.map((item:LeftSideItem, index:number) => {
         
       if(item.isFloating)
       {    
@@ -107,11 +110,14 @@ const TeeterTotterPage : FunctionComponent<any> =
 
 
       var handleDivLoadd=()=>{
-             document.getElementById('parentcontainer').focus();
+          
+          document.getElementById('parentcontainer')?.focus();
+
+          
       }
 
       var handleReset=()=>{
-        resetGame();
+        ResetGame();
       }
 
 

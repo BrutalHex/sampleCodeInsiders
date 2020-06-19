@@ -1,6 +1,6 @@
 
 import {getUUID,getRandomColor} from '../../base/baseService'
-import RandomGenerator from './RandomGenerator'
+import RandomGenerator from '../../base/RandomGenerator'
 
 
  export default class RandomShape {
