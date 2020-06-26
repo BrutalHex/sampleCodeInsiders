@@ -32,7 +32,7 @@ import LeftSideItem from '../../components/GameObjects/LeftSideItem';
 function addNewLftSideItem(initstate:Array<LeftSideItem>=[], action:INewLeftSideShapeAction) {
 
   var items=[...initstate];
-  items.push(action.payload.shape);
+  items.push(action.payload);
   return  items ;
 
 }
@@ -69,7 +69,7 @@ function newGameTime(initstate:number, action:INewGameTimeAction ): number{
 
 function gameOver(initstate:boolean, action:IGameOverAction)
 {
-  return true;
+  return action.payload;
 }
 
 function resetGame(state:any, action:IResetGameAction)
@@ -138,12 +138,13 @@ const leftShapeReducer = createReducer([], {
   New_Left_Side_Shape: addNewLftSideItem,
    Disable_Move: disableMove
   
-})
+});
+
 const changeHandleshapeReducer= createReducer(null, {
   Change_Handle: changeHandle,
   
   
-})
+});
 
  
 

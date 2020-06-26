@@ -6,7 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-	"paths":{"redux-thunk":["typings/redux-thunk"]},
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,7 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-	"rootDir": "src",
+    "rootDir": "src",
     "outDir": "build",
     "jsx": "react"
   },

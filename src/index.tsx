@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import Root from './base/Root';
 import configureStore from './base/configureStore'
 import * as serviceWorker from './serviceWorker';
-import {initialState} from './Pages/Play/TitterTooterState';
- 
+  
 
-const store = configureStore(initialState);
+const store = configureStore(undefined);
 
 
 ReactDOM.render(

@@ -7,6 +7,7 @@ import { IResetGameAction } from './IResetGameAction';
 import { IGameTimerHandleAction } from './IGameTimerHandleAction';
 import { IGeneralAction } from './IGeneralAction';
 import { IChangeHandleAction } from './IChangeHandleAction';
+import { IInitializeAction } from './IInitializeAction';
   export const   Initialize_APP        ='Initialize';
   export const   New_Right_Side_Shape    ='New_Right_Side_Shape';
   export const   New_Left_Side_Shape    ='New_Left_Side_Shape';
@@ -31,7 +32,7 @@ import { IChangeHandleAction } from './IChangeHandleAction';
 
  export type  ActoinTypes =  INewRightSideItemAction
                              | INewLeftSideShapeAction 
-                             | INewRightSideItemAction
+                             | IInitializeAction
                              | IDisableMoveAction
                              | INewGameTimeAction
                              | IGameOverAction

@@ -20,6 +20,6 @@ export default function configureStore(preloadedState:any) {
   const middlewareEnhancer = ( applyMiddleware(...definedMiddlewares));
  
  
-  const store = createStore(rootReducer,  middlewareEnhancer);
+  const store = createStore(rootReducer , middlewareEnhancer);
   return store
 }

@@ -10,7 +10,7 @@ import RandomShape from '../../components/GameObjects/RandomShape';
 import { TeeterTotterPageProps } from './TeeterTotterPageContainer';
  
 const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
-({  isInit,left ,right ,handle,gameTime,InitGame,DisableMove,angle,GameOver,ResetGame}) => {
+({  isInit,left ,right ,handle,gameTime,InitGame,DisableMove,angle,gameOver,ResetGame}) => {
    
    var getSvgDrawing=(item:RandomShape,index:number) => {
 
@@ -57,7 +57,7 @@ const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
           
       }, 200);
    }
-
+debugger;
    right.posY=handle.y-right.height;
    var rightItem= getSvgDrawing(right,0);
     
@@ -137,7 +137,7 @@ const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
       
           
             >
-    <GameOverModal      Show={GameOver}  Reset={handleReset}   />
+    <GameOverModal      Show={gameOver}  Reset={handleReset}   />
          <svg width="1000" height="800"
        
          xmlns="http://www.w3.org/2000/svg" className="scene">
