@@ -13,5 +13,8 @@ export type TeeterTotterThunkDispatch = ThunkDispatch<RootState, ExtraArg, Actio
 
 
 export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
+
+
+export type NullableNumber = (number | null);
  
 

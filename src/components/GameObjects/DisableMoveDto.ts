@@ -1,4 +1,4 @@
-import LeftSideItem from '../components/GameObjects/LeftSideItem'
+import LeftSideItem from './LeftSideItem'
 
 
 export default class DisableMoveDto

@@ -1,7 +1,7 @@
 import { connect ,ConnectedProps } from 'react-redux'
 
 import TeeterTotterPage from './TeeterTotterPage'
- import {InitializeGame,RequestleftSideFloatingShape,NewGameTime,DisableMove,ResetGame,NewGameTimerHandle} from './TeeterTotterPageAction'
+ import {InitializeGame,RequestleftSideFloatingShape,NewGameTime,DisableMove,ResetGame,NewGameTimerHandle, NewRightSideItem} from './TeeterTotterPageAction'
 
 import RightSideItem from '../../components/GameObjects/RightSideItem'
 import { TeeterTotterThunkDispatch } from '../../base/BaseTypes';
@@ -10,16 +10,10 @@ import { RootState } from '../../base/reducers';
  
 const mapStateToProps = (state:RootState ) => {
   
- 
+ debugger;
 var obj= {
 
-    isInit  :state.teeterTotter.isInit,
-    left    :state.teeterTotter.leftSideShape,
-    right   :state.teeterTotter.rightSideShape,
-    handle:state.teeterTotter.handle,
-    gameTime:state.teeterTotter.gameTime,
-    angle:state.teeterTotter.angle,
-    GameOver:state.teeterTotter.gameOver
+   ...state.teeterTotter
 };
  
 return obj;
@@ -53,7 +47,8 @@ const mapDispatchToProps = (dispatch:TeeterTotterThunkDispatch ) => {
           }
         },undefined, 41);
        dispatch(NewGameTimerHandle(gameTimerId));
-      dispatch(InitializeGame(new RightSideItem()));
+      dispatch(InitializeGame(true));
+      dispatch(NewRightSideItem(new RightSideItem()));
     },
 
     ResetGame:()=>{

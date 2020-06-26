@@ -1,5 +1,4 @@
-import {  InitialState } from '../base/BaseReducer';
-import { IInitializeAction } from './IInitializeAction';
+ import { INewRightSideItemAction } from './INewRightSideItemAction';
 import { INewLeftSideShapeAction } from './INewLeftSideShapeAction';
 import { IDisableMoveAction } from './IDisableMoveAction';
 import { INewGameTimeAction } from './INewGameTimeAction';
@@ -7,13 +6,17 @@ import { IGameOverAction } from './IGameOverAction';
 import { IResetGameAction } from './IResetGameAction';
 import { IGameTimerHandleAction } from './IGameTimerHandleAction';
 import { IGeneralAction } from './IGeneralAction';
+import { IChangeHandleAction } from './IChangeHandleAction';
   export const   Initialize_APP        ='Initialize';
+  export const   New_Right_Side_Shape    ='New_Right_Side_Shape';
   export const   New_Left_Side_Shape    ='New_Left_Side_Shape';
   export const   Disable_Move           ='Disable_Move';
   export const   New_Game_Time          ='New_Game_Time';
   export const   Game_Over               ='GameOver';
   export const   Reset_Game              ='Reset_Game';
   export const   Game_Timer_Handle       ='Game_Timer_Handle';
+  export const   Change_Handle      ='Change_Handle';
+
 
 
   export   function creatAction<TType,TPayload>( inputType:TType, inputPayload:TPayload):IGeneralAction<TType,TPayload>{
@@ -26,13 +29,15 @@ import { IGeneralAction } from './IGeneralAction';
   
   
 
- export type  ActoinTypes =  IInitializeAction
+ export type  ActoinTypes =  INewRightSideItemAction
                              | INewLeftSideShapeAction 
+                             | INewRightSideItemAction
                              | IDisableMoveAction
                              | INewGameTimeAction
                              | IGameOverAction
                              | IResetGameAction
-                             | IGameTimerHandleAction                             
+                             | IGameTimerHandleAction   
+                             | IChangeHandleAction                          
                              ;
 
 
