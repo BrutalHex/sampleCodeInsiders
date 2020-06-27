@@ -10,7 +10,7 @@ import RandomShape from '../../components/GameObjects/RandomShape';
 import { TeeterTotterPageProps } from './TeeterTotterPageContainer';
  
 const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
-({  isInit,left ,right ,handle,gameTime,InitGame,DisableMove,angle,gameOver,ResetGame}) => {
+({  isInit, leftSideShape ,  rightSideShape ,handle,gameTime,InitGame,DisableMove,gameOver,ResetGame}) => {
    
    var getSvgDrawing=(item:RandomShape,index:number) => {
 
@@ -45,23 +45,26 @@ const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
 
    };
 
-
+ debugger;
    if(isInit)
    {
-    
+      
        InitGame();
        setTimeout(function() {
-        var item= document.getElementById('parentcontainer');
-        
-        item != null && item.focus();
-          
+           
+           var item= document.getElementById('parentcontainer');        
+           item != null && item.focus();
+
       }, 200);
    }
-debugger;
-   right.posY=handle.y-right.height;
-   var rightItem= getSvgDrawing(right,0);
+   
+
+
+
+   rightSideShape.posY=handle.y-rightSideShape.height;
+   var rightItem= getSvgDrawing(rightSideShape,0);
     
-  var items=  left.map((item:LeftSideItem, index:number) => {
+  var items=  leftSideShape.map((item:LeftSideItem, index:number) => {
         
       if(item.isFloating)
       {    
@@ -79,7 +82,7 @@ debugger;
          return getSvgDrawing(item,index);
     });
   
-     var lastItem = left[left.length-1];
+     var lastItem = leftSideShape[leftSideShape.length-1];
       var   handleKeyDown=(e:any)=>{
            if(lastItem.isFloating)
            {
@@ -142,7 +145,7 @@ debugger;
        
          xmlns="http://www.w3.org/2000/svg" className="scene">
 
-<g     transform={`rotate(${angle} 500 483.24999)`}>
+<g     transform={`rotate(${handle.angle} 500 483.24999)`}>
   {rightItem}
 {items}
 <rect stroke="#bf0000" fill="#0e21f4" stroke-width="1.5" x="0.75" y="483.24999" width="991" height="5" 

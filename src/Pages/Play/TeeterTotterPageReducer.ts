@@ -38,8 +38,11 @@ function addNewLftSideItem(initstate:Array<LeftSideItem>=[], action:INewLeftSide
 }
 
 
-function addNewRightSideItem(initstate:any, action:INewRightSideItemAction): RightSideItem
+function addNewRightSideItem(initstate:RightSideItem, action:INewRightSideItemAction): RightSideItem
 {
+
+
+
   return action.payload;
 
 
@@ -58,7 +61,10 @@ function disableMove(initstate:Array<LeftSideItem>, action:IDisableMoveAction) {
 
 function changeHandle(initstate:any, action:IChangeHandleAction):Handle
 {
-    return new Handle(action.payload.angle,action.payload.forceDiff) ;
+
+
+  return new Handle(action.payload.angle,action.payload.forceDiff);
+
 }
 
 function newGameTime(initstate:number, action:INewGameTimeAction ): number{
@@ -87,7 +93,7 @@ function gameTimerHandle(initstate:NullableNumber, action:IGameTimerHandleAction
 
  
 
-  const intializeAppReducer = createReducer(false, {
+const intializeAppReducer = createReducer(true, {
     Initialize_APP: intializeApp
 });
 
@@ -95,7 +101,7 @@ function gameTimerHandle(initstate:NullableNumber, action:IGameTimerHandleAction
 
  
 
-const newRightSideShapeReducer = createReducer(null, {
+const newRightSideShapeReducer = createReducer(new RightSideItem(), {
   New_Right_Side_Shape: addNewRightSideItem
 });
 
@@ -127,23 +133,15 @@ const resetGameReducer=createReducer(null,{
   Reset_Game:resetGame
 });
 
-  //https://redux.js.org/recipes/structuring-reducers/refactoring-reducer-example
-
- 
-
-
-
-
+  
 const leftShapeReducer = createReducer([], {
   New_Left_Side_Shape: addNewLftSideItem,
    Disable_Move: disableMove
   
 });
 
-const changeHandleshapeReducer= createReducer(null, {
+const changeHandleshapeReducer= createReducer(new Handle(), {
   Change_Handle: changeHandle,
-  
-  
 });
 
  

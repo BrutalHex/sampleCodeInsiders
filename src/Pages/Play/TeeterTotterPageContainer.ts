@@ -10,7 +10,7 @@ import { RootState } from '../../base/reducers';
  
 const mapStateToProps = (state:RootState ) => {
   
- debugger;
+ 
 var obj= {
 
    ...state.teeterTotter
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch:TeeterTotterThunkDispatch ) => {
 
     InitGame:()=>{
 
-    
+    debugger;
          let timer:number=0;
          dispatch(RequestleftSideFloatingShape(timer));
          let gameTimerId:number =  setInterval(() => {

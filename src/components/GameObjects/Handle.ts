@@ -9,6 +9,7 @@ export default class Handle  {
       
       constructor(angle:number=0, forceDiff:number=0)
        {
+    
            this.angle=angle;
            this.forceDiff=forceDiff;
        }

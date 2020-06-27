@@ -6,6 +6,7 @@ import { History } from 'history';
 import {logger,timeoutScheduler} from './middlewares'
 
 import rootReducer, {history} from './reducers'
+import { TitterTooterState } from '../Pages/Play/TitterTooterState';
 
 
 
@@ -15,11 +16,9 @@ import rootReducer, {history} from './reducers'
 
 export default function configureStore(preloadedState:any) {
   
-    const definedMiddlewares = [  routerMiddleware(history),timeoutScheduler, thunkMiddleware];
-
+  const definedMiddlewares = [  routerMiddleware(history),timeoutScheduler, thunkMiddleware];
   const middlewareEnhancer = ( applyMiddleware(...definedMiddlewares));
- 
- 
-  const store = createStore(rootReducer , middlewareEnhancer);
-  return store
+  const store = createStore(rootReducer, preloadedState, middlewareEnhancer);
+  return store;
+
 }
