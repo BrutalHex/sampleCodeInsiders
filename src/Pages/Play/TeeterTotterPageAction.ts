@@ -1,8 +1,8 @@
  
-import { useSelector } from 'react-redux'
+ 
 import {  TitterTooterState } from './TitterTooterState';
 
-import {TeeterTotterThunkResult,TeeterTotterThunkDispatch,useTypedSelector} from '../../base/BaseTypes'
+import {TeeterTotterThunkResult,TeeterTotterThunkDispatch} from '../../base/BaseTypes'
  import LeftSideItem from '../../components/GameObjects/LeftSideItem'
 import RightSideItem from '../../components/GameObjects/RightSideItem'
 import Mathematics from '../../base/Mathematics'
@@ -18,59 +18,66 @@ import Handle from '../../components/GameObjects/Handle';
 
 
 
-
-export const RequestleftSideFloatingShape=(timer:number):TeeterTotterThunkResult<ActoinTypes>=>
+export const RequestleftSideFloatingShape=(timer:number) =>
  {  
-   
-   var state=useTypedSelector(state => state.teeterTotter);
 
+     return (dispatch:TeeterTotterThunkDispatch,getState:any)=>
+     {
+      debugger;
 
-
-   
-   debugger;
-    var obj=new LeftSideItem(timer)
- let totalWeight=0;
- let leftSideForce=0;
-
- let handleEffectiveLen=state.handle.width/2;
- 
-  var itemsOfLeft=state.leftSideShape;
-  itemsOfLeft.map((item:any,index:number )=>   {
+      let state=getState().teeterTotter;
     
-    totalWeight=totalWeight+item.weight;
-    if(!item.isFloating)
-    {
-       leftSideForce=leftSideForce+  item.CalculateForce(handleEffectiveLen);
-    }
-   
-   });
-
-     var rightForce=  !state.rightSideShape.CalculateForce ? 0: state.rightSideShape.CalculateForce(handleEffectiveLen);
+      let obj=new LeftSideItem(timer)
+     let totalWeight=0;
+     let leftSideForce=0;
+    
+     let handleEffectiveLen=state.handle.width/2;
      
- 
-     var angle=Mathematics.CalculateEquilibreumAngle(rightForce,leftSideForce);
-     
-
-      var forcediff=(leftSideForce-rightForce);
+     let itemsOfLeft=state.leftSideShape;
+      debugger;
+      itemsOfLeft.map((item:any,index:number )=>   {
+        
+        totalWeight=totalWeight+item.weight;
+        if(!item.isFloating)
+        {
+           leftSideForce=leftSideForce+  item.CalculateForce(handleEffectiveLen);
+        }
        
+       });
+    
+       let rightForce=  !state.rightSideShape.CalculateForce ? 0: state.rightSideShape.CalculateForce(handleEffectiveLen);
+         
+     
+         let angle=Mathematics.CalculateEquilibreumAngle(rightForce,leftSideForce);
+         
+    
+         let forcediff=(leftSideForce-rightForce);
+           
+      
+      if(totalWeight+obj.weight<=20 && (Math.abs(angle)<30 ))
+      {
+    
+         dispatch( NewLeftSideShape(obj) ); 
+    
+        return dispatch( HandleChanged(forcediff,angle));
+      }
+    
+      angle=Mathematics.GetMaxAngle(angle,30);
+    
+      clearInterval( state.gameTimerId as number);
+
+      dispatch(HandleChanged(forcediff,angle));
+     
+     return dispatch(  GameOver(forcediff,angle));
   
-  if(totalWeight+obj.weight<=20 && (Math.abs(angle)<30 ))
-  {
+     
+     }
+     
 
-   NewLeftSideShape(obj) ; 
-
-    return HandleChanged(forcediff,angle);
-  }
-
-  angle=Mathematics.GetMaxAngle(angle,30);
-
-  clearInterval( state.gameTimerId as number)
-  HandleChanged(forcediff,angle);
  
-  return   GameOver(forcediff,angle);
     
 }
-
+ 
 
 
 
@@ -96,18 +103,20 @@ export function NewRightSideItem(shape:RightSideItem):   TeeterTotterThunkResult
   
 
 }    
+export function NewLeftSideShape(  shape:LeftSideItem ):   TeeterTotterThunkResult<ActoinTypes>{
 
+ 
+ 
+  return  (dispatch:TeeterTotterThunkDispatch) =>  dispatch(   creatAction(  New_Left_Side_Shape,   shape   ));
+
+}  
 
 export function HandleChanged(forcediff:number, angle:number): TeeterTotterThunkResult<ActoinTypes>
 {
   return  (dispatch:TeeterTotterThunkDispatch) =>  dispatch( creatAction(  Change_Handle,    new Handle(angle,forcediff)     ) );
 } 
 
-export function NewLeftSideShape(  shape:LeftSideItem ):   TeeterTotterThunkResult<ActoinTypes>{
 
-  return  (dispatch:TeeterTotterThunkDispatch) =>  dispatch(   creatAction(  New_Left_Side_Shape,     shape  ));
-
-}  
 
 
  

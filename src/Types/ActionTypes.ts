@@ -8,7 +8,7 @@ import { IGameTimerHandleAction } from './IGameTimerHandleAction';
 import { IGeneralAction } from './IGeneralAction';
 import { IChangeHandleAction } from './IChangeHandleAction';
 import { IInitializeAction } from './IInitializeAction';
-  export const   Initialize_APP        ='Initialize';
+  export const   Initialize_APP        ='Initialize_APP';
   export const   New_Right_Side_Shape    ='New_Right_Side_Shape';
   export const   New_Left_Side_Shape    ='New_Left_Side_Shape';
   export const   Disable_Move           ='Disable_Move';

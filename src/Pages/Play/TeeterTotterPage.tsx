@@ -8,11 +8,15 @@ import GameOverModal from '../../components/GameOverModal'
 import LeftSideItem from '../../components/GameObjects/LeftSideItem';
 import RandomShape from '../../components/GameObjects/RandomShape';
 import { TeeterTotterPageProps } from './TeeterTotterPageContainer';
+import { useTypedSelector } from '../../base/BaseTypes';
  
 const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
 ({  isInit, leftSideShape ,  rightSideShape ,handle,gameTime,InitGame,DisableMove,gameOver,ResetGame}) => {
    
-   var getSvgDrawing=(item:RandomShape,index:number) => {
+
+   let state=useTypedSelector(state => state.teeterTotter)
+   
+   let getSvgDrawing=(item:RandomShape,index:number) => {
 
     switch(item.shapeType) {
       case 'rectangle':
@@ -45,11 +49,11 @@ const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
 
    };
 
- debugger;
+ 
    if(isInit)
    {
-      
-       InitGame();
+     
+       InitGame(handle,leftSideShape,rightSideShape);
        setTimeout(function() {
            
            var item= document.getElementById('parentcontainer');        
@@ -148,14 +152,14 @@ const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
 <g     transform={`rotate(${handle.angle} 500 483.24999)`}>
   {rightItem}
 {items}
-<rect stroke="#bf0000" fill="#0e21f4" stroke-width="1.5" x="0.75" y="483.24999" width="991" height="5" 
+<rect stroke="#bf0000" fill="#0e21f4" strokeWidth="1.5" x="0.75" y="483.24999" width="991" height="5" 
   id="handle"/>
 </g>
 
 <path id="baseTriangle" d="M450.5,769.3750009610361 L500,484.6250090898019 L549.5,769.3750009610361 L450.5,769.3750009610361 z" 
-opacity="1" stroke-width="0" fill="#3f7f00" stroke="#3f7f00"></path>
+opacity="1" strokeWidth="0" fill="#3f7f00" stroke="#3f7f00"></path>
 <rect id="ground" height="30" width="995.00002" y="769.25001" x="2.5" 
-stroke-width="0" fill="#3f7f00" stroke="#3f7f00"></rect>
+strokeWidth="0" fill="#3f7f00" stroke="#3f7f00"></rect>
 </svg>
 
         </div>

@@ -32,7 +32,7 @@ export function updateItemInArray<T,Key>(array: Array<T> , itemId:Key, updateIte
 
   
   export function createReducer(initialState:any, handlers:any) {
-   var a=  function reducer(state = initialState, action:any) {
+   let result=  function reducer(state = initialState, action:any) {
       if (handlers.hasOwnProperty(action.type)) {
         return handlers[action.type](state, action)
       } else {
@@ -40,5 +40,5 @@ export function updateItemInArray<T,Key>(array: Array<T> , itemId:Key, updateIte
       }
     }
    
-    return a;
+    return result;
   }

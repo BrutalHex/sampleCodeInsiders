@@ -18,22 +18,26 @@ import { IInitializeAction } from '../../Types/IInitializeAction';
 import { IChangeHandleAction } from '../../Types/IChangeHandleAction';
  import Handle from '../../components/GameObjects/Handle';
 import LeftSideItem from '../../components/GameObjects/LeftSideItem';
- 
+import 
+{
+  Initialize_APP,Game_Timer_Handle,Reset_Game ,Game_Over,Disable_Move,New_Game_Time,New_Left_Side_Shape, New_Right_Side_Shape, Change_Handle
+} from '../../Types/ActionTypes'
 
 
 
 
   function intializeApp(initstate:boolean, action:IInitializeAction): boolean{
-  
+   
     return  action.payload
 
 }
 
-function addNewLftSideItem(initstate:Array<LeftSideItem>=[], action:INewLeftSideShapeAction) {
+function addNewLftSideItem(initstate:Array<LeftSideItem>, action:INewLeftSideShapeAction) {
 
+ debugger;
   var items=[...initstate];
-  items.push(action.payload);
-  return  items ;
+   items.push(action.payload);
+  return [...items] ;
 
 }
 
@@ -59,11 +63,11 @@ function disableMove(initstate:Array<LeftSideItem>, action:IDisableMoveAction) {
   return leftSideShapesArr;
 }
 
-function changeHandle(initstate:any, action:IChangeHandleAction):Handle
+function changeHandle(initstate:Handle, action:IChangeHandleAction):Handle
 {
 
 
-  return new Handle(action.payload.angle,action.payload.forceDiff);
+  return action.payload;//new Handle(action.payload.angle,action.payload.forceDiff);
 
 }
 
@@ -93,9 +97,7 @@ function gameTimerHandle(initstate:NullableNumber, action:IGameTimerHandleAction
 
  
 
-const intializeAppReducer = createReducer(true, {
-    Initialize_APP: intializeApp
-});
+
 
 
 
@@ -121,6 +123,9 @@ const gameOverReducer=createReducer(false,{
 });
 
 
+const intializeAppReducer = createReducer(true, {
+  Initialize_APP: intializeApp
+});
 
 const gameTimerHandleReducer=createReducer(null,{
 
@@ -134,7 +139,7 @@ const resetGameReducer=createReducer(null,{
 });
 
   
-const leftShapeReducer = createReducer([], {
+const leftShapeReducer = createReducer( [], {
   New_Left_Side_Shape: addNewLftSideItem,
    Disable_Move: disableMove
   
