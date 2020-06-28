@@ -68,7 +68,7 @@ export const RequestleftSideFloatingShape=(timer:number) =>
 
       dispatch(HandleChanged(forcediff,angle));
      
-     return dispatch(  GameOver(forcediff,angle));
+     return dispatch(  GameOver());
   
      
      }
@@ -137,7 +137,7 @@ export function DisableMove(item:LeftSideItem,index:number):   TeeterTotterThunk
 }  
 
  
-export function GameOver(forcediff:number,angle:number): TeeterTotterThunkResult<ActoinTypes> {
+export function GameOver(): TeeterTotterThunkResult<ActoinTypes> {
 
 
        

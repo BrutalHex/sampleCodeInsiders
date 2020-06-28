@@ -52,7 +52,7 @@ const mapDispatchToProps = (dispatch:TeeterTotterThunkDispatch) => {
           {
             dispatch(RequestleftSideFloatingShape(timer));
           }
-        },undefined, 41);
+        },undefined, 10);
        dispatch(NewGameTimerHandle(gameTimerId));
       
       dispatch(InitializeGame(false));

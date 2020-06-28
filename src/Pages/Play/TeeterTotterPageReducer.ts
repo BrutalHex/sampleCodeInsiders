@@ -79,6 +79,7 @@ function newGameTime(initstate:number, action:INewGameTimeAction ): number{
 
 function gameOver(initstate:boolean, action:IGameOverAction)
 {
+  debugger;
   return action.payload;
 }
 

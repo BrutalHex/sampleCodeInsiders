@@ -156,8 +156,12 @@ const TeeterTotterPage : FunctionComponent<TeeterTotterPageProps> =
   id="handle"/>
 </g>
 
-<path id="baseTriangle" d="M450.5,769.3750009610361 L500,484.6250090898019 L549.5,769.3750009610361 L450.5,769.3750009610361 z" 
-opacity="1" strokeWidth="0" fill="#3f7f00" stroke="#3f7f00"></path>
+<path id="baseTriangle" d="m450.5,769.375l49.5,-284.74999l49.5,284.74999l-99,0z" fill="#3f7f00" stroke="#3f7f00"/>
+
+<text stroke="#000" 
+text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_1vbfhg" 
+y="700.25826" x="483.45193" stroke-width="0" fill="#ffffff">{handle.angle.toString().substring(0,3)}</text>
+
 <rect id="ground" height="30" width="995.00002" y="769.25001" x="2.5" 
 strokeWidth="0" fill="#3f7f00" stroke="#3f7f00"></rect>
 </svg>
