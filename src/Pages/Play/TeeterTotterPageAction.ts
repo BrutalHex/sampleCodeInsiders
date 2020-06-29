@@ -23,7 +23,7 @@ export const RequestleftSideFloatingShape=(timer:number) =>
 
      return (dispatch:TeeterTotterThunkDispatch,getState:any)=>
      {
-      debugger;
+    
 
       let state=getState().teeterTotter;
     
@@ -34,7 +34,7 @@ export const RequestleftSideFloatingShape=(timer:number) =>
      let handleEffectiveLen=state.handle.width/2;
      
      let itemsOfLeft=state.leftSideShape;
-      debugger;
+ 
       itemsOfLeft.map((item:any,index:number )=>   {
         
         totalWeight=totalWeight+item.weight;

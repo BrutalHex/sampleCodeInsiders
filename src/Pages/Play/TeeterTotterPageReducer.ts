@@ -34,7 +34,7 @@ import
 
 function addNewLftSideItem(initstate:Array<LeftSideItem>, action:INewLeftSideShapeAction) {
 
- debugger;
+ 
   var items=[...initstate];
    items.push(action.payload);
   return [...items] ;
@@ -79,13 +79,13 @@ function newGameTime(initstate:number, action:INewGameTimeAction ): number{
 
 function gameOver(initstate:boolean, action:IGameOverAction)
 {
-  debugger;
+ 
   return action.payload;
 }
 
 function resetGame(state:any, action:IResetGameAction)
 {
-debugger;
+ 
 var newState= new TitterTooterState();
    return newState;
 }

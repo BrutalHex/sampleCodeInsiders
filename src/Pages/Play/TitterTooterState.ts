@@ -16,8 +16,7 @@ export class TitterTooterState
     
     constructor()
     {
-        
-        debugger;
+ 
         this.rightSideShape=new RightSideItem();
         this.handle=new Handle();
 

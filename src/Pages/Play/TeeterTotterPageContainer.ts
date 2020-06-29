@@ -45,15 +45,18 @@ const mapDispatchToProps = (dispatch:TeeterTotterThunkDispatch) => {
    
          let timer:number=0;
          dispatch(RequestleftSideFloatingShape(timer));
-         let gameTimerId:number =  setInterval(() => {
+          setInterval(() => {
+     
         timer++;
           dispatch(NewGameTime(timer));
           if((timer*24)%400==0)
           {
+            debugger;
             dispatch(RequestleftSideFloatingShape(timer));
           }
-        },undefined, 10);
-       dispatch(NewGameTimerHandle(gameTimerId));
+
+        },700,0);
+       dispatch(NewGameTimerHandle(0));
       
       dispatch(InitializeGame(false));
       dispatch(NewRightSideItem(new RightSideItem()));
