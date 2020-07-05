@@ -1,63 +1,49 @@
-@mixin dashboard-title-font{
-    font-family: Montserrat;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 1.5;
+@mixin dashboard-title-font {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
 }
 
-@mixin shadow{
-    -webkit-box-shadow: 1px 1px 2px 2.3px #35c0f5;  
-    -moz-box-shadow:    1px 1px 2px 2.3px #35c0f5;
-    box-shadow:         1px 1px 2px 2.3px #35c0f5;
+@mixin shadow {
+  -webkit-box-shadow: 1px 1px 2px 2.3px #35c0f5;
+  -moz-box-shadow: 1px 1px 2px 2.3px #35c0f5;
+  box-shadow: 1px 1px 2px 2.3px #35c0f5;
 }
 
-
-.playlayout
-{
-   .menu-bar{
+.playlayout {
+  .menu-bar {
     box-shadow: 0 4px 55px 0 #20222319;
     background-color: #ffffff;
-    min-height:70px ;
+    min-height: 70px;
 
-        .nav-bar-dropdown
-        { 
+    .nav-bar-dropdown {
+      @include dashboard-title-font;
+      font-size: 14px;
 
-             @include dashboard-title-font;
-            font-size: 14px;
-            
-            text-align: center;
-            color: #2c2f32;
-            font-weight: 500;
-            a{
-                color: #2c2f32;
-            }
-         
-        }
-
-
-
-   }
-   .children-area{
-       min-height: 800px;
-   }
-
-   
-
+      text-align: center;
+      color: #2c2f32;
+      font-weight: 500;
+      a {
+        color: #2c2f32;
+      }
+    }
+  }
+  .children-area {
+    min-height: 800px;
+  }
 }
 
- 
- 
-.scene
-{
-    border: solid #000 2px ;
-   
+.scene {
+  border: solid #000 2px;
 }
-.svg-triangle{
-    width: 0; height: 0; border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 5px solid black;
-  }
- 
+.svg-triangle {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
+}
 
-  .operatiopn-bar
-  {
-    
-  }
+.operatiopn-bar {
+}

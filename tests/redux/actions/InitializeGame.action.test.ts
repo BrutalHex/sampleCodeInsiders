@@ -19,7 +19,7 @@ const reduxStore = mockStore();
 
 describe('game start', () => {
 
-
+  
   beforeEach(() => {
 	reduxStore.clearActions();
   });

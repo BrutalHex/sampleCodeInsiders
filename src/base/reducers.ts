@@ -1,20 +1,15 @@
-import { combineReducers } from 'redux'
-import { History } from 'history';
-import { createBrowserHistory } from 'history'
-import { connectRouter } from 'connected-react-router'
-import TeeterTotterPageReducer from  '../Pages/Play/TeeterTotterPageReducer'
- 
+import { combineReducers } from 'redux';
+import { createBrowserHistory } from 'history';
+import { connectRouter } from 'connected-react-router';
+import TeeterTotterPageReducer from '../Pages/Play/TeeterTotterPageReducer';
 
-export const history = createBrowserHistory()
+export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
+  teeterTotter: TeeterTotterPageReducer,
+  router: connectRouter(history),
+});
 
-   
-    teeterTotter:TeeterTotterPageReducer,
-    router: connectRouter(history)
-  })
- 
-  export default rootReducer
+export default rootReducer;
 
-
-  export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
