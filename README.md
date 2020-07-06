@@ -23,7 +23,7 @@
  ## Description
 
  this is just a simple demonstration that i had developed after an interview
- to sho my coding in reactjs. some part of it maybe look meaningless like 
+ to show my coding in react. some part of it maybe look meaningless like 
  ActionCreator func instead of using built-in ActionCreator of Redux toolkit.
  I have used both HOC and hooks to show that I know both !!!!!!!.
  I have used least unit test and no end to end tests but it's enough to show 
