@@ -18,7 +18,7 @@ import { RootState } from '../../base/reducers';
 
 const mapStateToProps = (state: RootState) => {
   var obj = {
-    ...state.teeterTotter,
+    ...state,
   };
 
   return obj;

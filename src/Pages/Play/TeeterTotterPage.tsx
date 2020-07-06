@@ -12,7 +12,6 @@ import { useTypedSelector } from '../../base/BaseTypes';
 const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
   InitGame,
   DisableMove,
-  gameOver,
   ResetGame,
 }) => {
   let state = useTypedSelector((state) => state.teeterTotter);
@@ -35,7 +34,7 @@ const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
   };
 
   if (state.isInit) {
-    InitGame(state.handle, state.leftSideShape, state.rightSideShape);
+    InitGame();
     setTimeout(function () {
       var item = document.getElementById('parentcontainer');
       item != null && item.focus();
@@ -102,7 +101,7 @@ const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
           onLoad={handleDivLoadd}
           onKeyDown={handleKeyDown}
         >
-          <GameOverModal Show={gameOver} Reset={handleReset} />
+          <GameOverModal Show={state.gameOver} Reset={handleReset} />
           <svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg" className="scene">
             <g transform={`rotate(${state.handle.angle} 500 483.24999)`}>
               {rightItem}
