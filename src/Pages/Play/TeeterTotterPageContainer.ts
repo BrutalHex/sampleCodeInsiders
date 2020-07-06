@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch: TeeterTotterThunkDispatch) => {
         () => {
           timer++;
           dispatch(NewGameTime(timer));
-          if ((timer * 24) % 300 === 0) {
+          if ((timer * 24) % 200 === 0) {
             dispatch(RequestleftSideFloatingShape(timer));
           }
         },

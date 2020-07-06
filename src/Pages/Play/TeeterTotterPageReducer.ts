@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
 import reduceReducers from 'reduce-reducers';
-
 import { TitterTooterState } from './TitterTooterState';
-
 import { createReducer, updateObject, updateItemInArrayIndex } from '../../base/reducerUtils';
 import { INewRightSideItemAction } from '../../Types/INewRightSideItemAction';
 import { INewLeftSideShapeAction } from '../../Types/INewLeftSideShapeAction';
@@ -18,9 +16,9 @@ import { IChangeHandleAction } from '../../Types/IChangeHandleAction';
 import Handle from '../../components/GameObjects/Handle';
 import LeftSideItem from '../../components/GameObjects/LeftSideItem';
 
-function intializeApp(initstate: boolean, action: IInitializeAction): boolean {
+const intializeApp = (initstate: boolean, action: IInitializeAction): boolean => {
   return action.payload;
-}
+};
 
 function addNewLftSideItem(initstate: Array<LeftSideItem>, action: INewLeftSideShapeAction) {
   var items = [...initstate];
@@ -28,12 +26,12 @@ function addNewLftSideItem(initstate: Array<LeftSideItem>, action: INewLeftSideS
   return [...items];
 }
 
-function addNewRightSideItem(
+const addNewRightSideItem = (
   initstate: RightSideItem,
   action: INewRightSideItemAction
-): RightSideItem {
+): RightSideItem => {
   return action.payload;
-}
+};
 
 function disableMove(initstate: Array<LeftSideItem>, action: IDisableMoveAction) {
   const leftSideShapesArr = updateItemInArrayIndex<LeftSideItem>(

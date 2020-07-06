@@ -24,7 +24,10 @@ export function updateObject<T>(oldObject: T, newValues: T) {
 
 export function createReducer(initialState: any, handlers: any) {
   const result = function reducer(state = initialState, action: any) {
-    if (Object.prototype.hasOwnProperty.call(action, 'type')) {
+    if (
+      Object.prototype.hasOwnProperty.call(action, 'type') &&
+      handlers[action.type] !== undefined
+    ) {
       return handlers[action.type](state, action);
     } else {
       return state;

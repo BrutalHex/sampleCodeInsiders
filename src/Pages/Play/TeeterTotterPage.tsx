@@ -10,11 +10,6 @@ import { TeeterTotterPageProps } from './TeeterTotterPageContainer';
 import { useTypedSelector } from '../../base/BaseTypes';
 
 const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
-  isInit,
-  leftSideShape,
-  rightSideShape,
-  handle,
-  gameTime,
   InitGame,
   DisableMove,
   gameOver,
@@ -39,22 +34,22 @@ const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
     }
   };
 
-  if (isInit) {
-    InitGame(handle, leftSideShape, rightSideShape);
+  if (state.isInit) {
+    InitGame(state.handle, state.leftSideShape, state.rightSideShape);
     setTimeout(function () {
       var item = document.getElementById('parentcontainer');
       item != null && item.focus();
     }, 200);
   }
 
-  rightSideShape.posY = handle.y - rightSideShape.height;
-  var rightItem = getSvgDrawing(rightSideShape, 0);
+  state.rightSideShape.posY = state.handle.y - state.rightSideShape.height;
+  var rightItem = getSvgDrawing(state.rightSideShape, 0);
 
-  var items = leftSideShape.map((item: LeftSideItem, index: number) => {
+  var items = state.leftSideShape.map((item: LeftSideItem, index: number) => {
     if (item.isFloating) {
-      var yPosition = item.posY + (gameTime * 1 - item.timeSnap);
-      if (yPosition >= handle.y) {
-        item.posY = handle.y - item.height;
+      var yPosition = item.posY + (state.gameTime * 1 - item.timeSnap);
+      if (yPosition >= state.handle.y) {
+        item.posY = state.handle.y - item.height;
         item.isFloating = false;
         DisableMove(item, index);
       } else {
@@ -64,20 +59,20 @@ const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
     return getSvgDrawing(item, index);
   });
 
-  var lastItem = leftSideShape[leftSideShape.length - 1];
+  var lastItem = state.leftSideShape[state.leftSideShape.length - 1];
   var handleKeyDown = (e: any) => {
     if (lastItem.isFloating) {
       e.preventDefault();
 
       var step = 30;
-      if (e.key == 'ArrowLeft') {
+      if (e.key === 'ArrowLeft') {
         lastItem.posX = lastItem.posX - step;
         if (lastItem.posX <= 30) {
           lastItem.posX = 30;
         }
       }
 
-      if (e.key == 'ArrowRight') {
+      if (e.key === 'ArrowRight') {
         lastItem.posX = lastItem.posX + step;
         if (lastItem.posX >= 400) {
           lastItem.posX = 400;
@@ -86,9 +81,7 @@ const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
     }
   };
 
-  var handleDivLoadd = () => {
-    document.getElementById('parentcontainer')?.focus();
-  };
+  var handleDivLoadd = () => document.getElementById('parentcontainer')?.focus();
 
   var handleReset = () => {
     ResetGame();
@@ -111,7 +104,7 @@ const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
         >
           <GameOverModal Show={gameOver} Reset={handleReset} />
           <svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg" className="scene">
-            <g transform={`rotate(${handle.angle} 500 483.24999)`}>
+            <g transform={`rotate(${state.handle.angle} 500 483.24999)`}>
               {rightItem}
               {items}
               <rect
@@ -144,7 +137,7 @@ const TeeterTotterPage: FunctionComponent<TeeterTotterPageProps> = ({
               stroke-width="0"
               fill="#ffffff"
             >
-              {handle.angle.toString().substring(0, 3)}
+              {state.handle.angle.toString().substring(0, 3)}
             </text>
 
             <rect
