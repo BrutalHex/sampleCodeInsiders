@@ -1,6 +1,6 @@
 ## Run
 
-npm start
+`npm start`
 
 ## test
 
@@ -18,7 +18,7 @@ npm start
  
 ## Build
 
- Run `npm run build`
+ execute : `npm run build`
  
  ## Description
 
